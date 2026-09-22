@@ -1,91 +1,133 @@
-# Tachyon capabilities
+# PiCode capabilities
 
 Human-readable view of the owned capability surface. The machine-readable SSOT
 is [capabilities.json](./capabilities.json). Keep them in sync.
 
-Each section maps to one ADE radar axis used by the bench dashboard.
+Status vocabulary: `claimed` (true in the product today) · `placeholder`
+(partial/undecided) · `not-claimed` (explicitly not a capability).
 
-Statuses used in YAML:
+## Agent support
 
-| Status | Meaning |
-| --- | --- |
-| `claimed` | Safe to mirror into the competitor profile as an owned claim |
-| `placeholder` | Intended direction; not ready for public/profile claims |
-| `not-claimed` | Explicitly out of profile claims for now |
+What runtimes PiCode can drive.
 
----
+**Claimed:**
 
-## Agent support (`agent_support`)
+- Real `pi` processes as the managed runtime — TUI in tmux, or `pi --mode rpc`
+  structured chat.
+- An agent CLI catalog beyond Pi (Claude Code, Codex, Grok, Hermes Agent,
+  OpenCode, Muse Code, Antigravity, Omp) as interactive terminals with activity
+  reporting where the vendor exposes a signal.
+- Per-agent provider, model and thinking level passed to `pi`; Pi keeps
+  ownership of its own auth file.
 
-What agent runtimes or roles Tachyon can drive.
+**Not claimed:**
 
-**Claimed (owned):**
+- First-class sub-agent delegation in core. Roles and delegation ship as opt-in
+  pi packages, not daemon routing.
 
-- Configured local agent runtimes
-- Sub-agent workflows
+## Orchestration
 
-**Not claimed yet:** public list of every supported vendor CLI, cloud-only
-agents without local control, etc. Add only when product docs allow.
+How work is split, queued and supervised.
 
-## Orchestration (`orchestration`)
+**Claimed:**
 
-How work is split, delegated, and closed.
+- Agent fleets across workspaces (plus free agents).
+- Durable task delivery: a prompt waits for settle; `steer` and `follow_up`
+  reach a running turn.
+- One human inbox for questions, approvals, results and unexpected exits.
+- Inter-agent messaging broker over MCP plus a durable peer mailbox.
+- Automations on cron or webhook with jitter, watchdog, cost cap and one
+  catch-up run.
+- A canvas board of agent/terminal/note/file/diff panels, where edges grant a
+  contact rather than a transcript.
 
-**Claimed (owned):**
+**Not claimed:**
 
-- Multi-agent delegation
-- Review handoff
-- Task-specific verification
+- An approval policy of its own: PiCode surfaces the dialogs and permission
+  prompts the runtime reports; auto-approve is undecided.
 
-## Workspace isolation (`workspace_isolation`)
+## Workspace isolation
 
-How concurrent or delegated work stays separated.
+How agent work is separated on one machine.
 
-**Claimed (owned):**
+**Claimed:**
 
-- Git worktree isolation
-- Explicit owned path boundaries for delegated work
+- Per-agent working directory (workspace folder plus optional `workPath`).
+- One tmux session per agent and per project shell, surviving browser and
+  daemon restarts.
+- A private per-agent Pi session directory.
+- Git worktree visibility plus composed create/prune/remove actions under
+  `<root>/.worktrees/<name>`.
 
-## Review and shipping (`review_shipping`)
+**Not claimed:**
 
-How humans and systems accept or reject change.
+- Agent sandboxing. Explicit non-goal: agents run with the invoking user's
+  permissions. Containers appear only in the shared-box gateway topology.
 
-**Claimed (owned):**
+## Review and shipping
 
-- Evidence records
-- Verification logs
-- Human-readable handoff and review flow
+How a change is inspected and handed off.
 
-## Remote and mobile (`remote_mobile`)
+**Claimed:**
 
-**Not claimed** in the public competitor profile. Keep empty of marketing claims
-until a product surface documents remote/mobile control.
+- Working-tree review with per-agent attribution (which files this agent
+  touched).
+- File browse and edit with Save, plus sandboxed HTML/markdown previews.
+- Commit graph with refs, remotes and worktrees, and per-file patches.
+- Composed git actions with risk tiers; tier C requires a typed phrase.
+- Delivery declarations with integration observation.
+- Cross-CLI session handoff with lineage.
 
-## Context and memory (`context_memory`)
+**Boundary to respect in reports:** PiCode never merges, never runs project
+checks and never publishes; publication state stays `unknown`.
 
-What persists across steps and agents.
+## Remote and mobile
 
-**Claimed (owned):**
+How the same fleet is supervised away from the desk.
 
-- Handoff context
-- Task evidence
-- Spec-driven development records when used
+**Claimed:**
 
-## Integrations (`integrations`)
+- A four-tab mobile PWA (Now, Inbox, Work, More).
+- In-tree push notifications for blocked agents, blocking inbox items and
+  finished runs, suppressed while a host browser is present.
+- Per-device pairing with one-use codes and revocable devices.
+- Remote access on a private network (mkcert or Tailscale) with persisted bind
+  and public-URL settings.
+- A shared-box gateway mapping tailnet identities to Linux users.
+- A Windows desktop shell (server still runs in WSL).
 
-How Tachyon attaches to host tools and repos.
+## Context and memory
 
-**Claimed (owned):**
+What is remembered, and who owns it.
 
-- Plugins
-- Host action governance
-- Repository-local verification commands
+**Claimed:**
 
----
+- SQLite orchestration overlay; conversations remain Pi's session files.
+- SSE change feed with a typed event row per mutation and cursor reset past
+  retention.
+- Cross-CLI session read and write paths.
+- Per-CLI long-term memory panes with declared tiers (`editable`, `readonly`,
+  `none`, `unknown`).
+- An encrypted provider-credential vault for PiCode and the guest CLIs.
+- Backup/restore of PiCode data with atomic swaps.
 
-## How to extend
+## Integrations
 
-1. Add an item under the right key in `capabilities.json` with `status`.
-2. Mirror the sentence here if it needs prose context.
-3. Run `python3 scripts/product/check-capabilities.py`.
-4. Sync the profile when you want the radar to reflect the change.
+How PiCode attaches to the rest of the toolchain.
+
+**Claimed:**
+
+- MCP servers exposing PiCode tools (computer, browser, inbox, checklist,
+  delivery).
+- A connector pane that writes each vendor's own MCP configuration.
+- HMAC-signed webhooks with ordered retries.
+- A package pane for Pi and the guest CLIs, plus MIT installable packages
+  in-tree.
+- A browser extension that hands page context to an existing agent.
+- An optional local model (llama.cpp) manager.
+
+## How to change this file
+
+Edit `capabilities.json` first; this Markdown mirrors it. Then run
+`python3 scripts/product/check-capabilities.py` and
+`python3 scripts/product/sync-picode-profile.py`.

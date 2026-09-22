@@ -44,7 +44,7 @@ CLOSED_OR_UNKNOWN = {
     "kiro",
     "maestri",
     "overclock",
-    "tachyon",
+    "picode",
     "xirp",
 }
 
@@ -78,14 +78,14 @@ class LicenseRosterTests(unittest.TestCase):
         self.assertTrue(EXPECTED_OSS.issubset(ids))
         public = {row["id"] for row in rows if row.get("source_kind") == "public-git"}
         self.assertEqual(public, EXPECTED_OSS)
-        closed_public = CLOSED_OR_UNKNOWN - {"tachyon"}
+        closed_public = CLOSED_OR_UNKNOWN - {"picode"}
         self.assertTrue(ids.isdisjoint(closed_public))
         for row in rows:
             if row["source_kind"] == "public-git":
                 self.assertTrue(str(row["source_url"]).startswith("http"))
-        if Path("~/tachyon").expanduser().is_dir():
-            self.assertIn("tachyon", ids)
-            owned = next(row for row in rows if row["id"] == "tachyon")
+        if Path("~/picode").expanduser().is_dir():
+            self.assertIn("picode", ids)
+            owned = next(row for row in rows if row["id"] == "picode")
             self.assertEqual(owned["source_kind"], "owned-local")
 
 
@@ -288,8 +288,8 @@ class CloneAndCliTests(unittest.TestCase):
         self.assertEqual(listed.returncode, 0, listed.stderr)
         ids = {line.split("\t", 1)[0] for line in listed.stdout.splitlines() if line.strip()}
         self.assertTrue(EXPECTED_OSS.issubset(ids))
-        if Path("~/tachyon").expanduser().is_dir():
-            self.assertIn("tachyon", ids)
+        if Path("~/picode").expanduser().is_dir():
+            self.assertIn("picode", ids)
         checked = bench("inspect-check")
         self.assertEqual(checked.returncode, 0, checked.stderr)
         self.assertIn("claude-code, codex, grok-build", checked.stdout)

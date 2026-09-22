@@ -33,12 +33,20 @@ The 11 inspectable products on 2026-08-17:
 
 Hive is **source-available** (BUSL-1.1), not OSI, and is skipped automatically.
 
-Tachyon is **owned-local**, not public OSS: `inspect_source.kind = owned-local`
-and `path = ~/tachyon`. It appears in `list-inspectable` only when that tree
-exists on disk. The harness copies a snapshot into `runs/` (never writes the
-product repo). Do not fill `source_url` until the product is public.
-A new OSS competitor becomes inspectable when its profile has an OSI license
-token and a cloneable `source_url` — no harness edit required.
+PiCode is the **owned reference product**. It is public
+(`github.com/cfpperche/picode`, docs at `cfpperche.github.io/picode`) but
+**non-OSI** (PolyForm Noncommercial), so it never joins the OSS roster. Its
+profile uses `inspect_source.kind = owned-local` with `path = ~/picode`: it
+appears in `list-inspectable` only when that tree exists on disk, and the
+harness copies a snapshot into `runs/` (never writes the product repo).
+
+Owned-local snapshots prune build output and product runtime state
+(`SNAPSHOT_IGNORE_DIRS` in `harness/source_inspect.py`: `node_modules`, `dist`,
+`target`, `bin`, `var`, `.worktrees`, `.picode`, `.pi`, …) and refuse to copy
+more than `SNAPSHOT_MAX_BYTES` (2 GiB), so a working tree full of binaries
+cannot fill `runs/`. A new OSS competitor becomes inspectable when its profile
+has an OSI license token and a cloneable `source_url` — no harness edit
+required.
 
 ## What we took from existing practice
 

@@ -34,8 +34,8 @@ def main() -> int:
         return 1
 
     errors: list[str] = []
-    if data.get("product_id") != "tachyon":
-        errors.append("product_id must be 'tachyon'")
+    if data.get("product_id") != "picode":
+        errors.append("product_id must be 'picode'")
     if not data.get("updated_at"):
         errors.append("updated_at is required")
     if data.get("confidence") not in ALLOWED_CONFIDENCE:

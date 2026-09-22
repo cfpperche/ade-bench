@@ -14,7 +14,7 @@ Maintainer workflow:
 - Follow the end-to-end playbook in `docs/competitor-runbook.md` (profile +
   advertiser registry + roster docs + CI checks + GitHub Pages publish).
 - Keep factual claims sourced to official pages, docs, repositories, package
-  manifests, app stores, or owned Tachyon docs.
+  manifests, app stores, or owned PiCode docs.
 - Put unknown implementation details in `research.stack.unknowns` or
   `research.moat.unknowns` instead of guessing.
 - Update `research.last_reviewed`, `research.confidence`, `research_status`,

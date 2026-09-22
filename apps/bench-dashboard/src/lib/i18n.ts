@@ -9,7 +9,7 @@ export const localeNames: Record<Locale, string> = {
 
 export const ui = {
   en: {
-    metaDescription: "Structured dashboard for Tachyon ADE Bench competitor intelligence.",
+    metaDescription: "Structured dashboard for ADE Bench competitor intelligence.",
     skip: "Skip to content",
     brandSubtitle: "competitor intelligence",
     nav: {
@@ -109,7 +109,7 @@ export const ui = {
       next: {
         title: "Next Benchmark Candidates",
         description:
-          "Products closest to a first comparable run, excluding the Tachyon reference profile.",
+          "Products closest to a first comparable run, excluding the PiCode reference profile.",
         suggestedTasks: "Suggested tasks",
       },
       discipline: {
@@ -291,7 +291,7 @@ export const ui = {
       blocks: [
         {
           title: "Battlecards",
-          body: "Crayon/Klue-style cards for positioning, objections, and Tachyon response.",
+          body: "Crayon/Klue-style cards for positioning, objections, and PiCode response.",
         },
         {
           title: "Digital imports",
@@ -316,7 +316,7 @@ export const ui = {
       signal: "signal",
       signals: "signals",
       objections: "Objections",
-      tachyonResponse: "Tachyon response",
+      productResponse: "PiCode response",
       sourceSignals: "Source signals",
       noSignals: "No competitive-intelligence signals are currently mapped for this product.",
       nextAction: "Next action",
@@ -332,10 +332,10 @@ export const ui = {
     strategy: {
       title: "Strategy",
       eyebrow: "SWOT and competitive pressure",
-      h1: "Position Tachyon around verifiable agentic development, not feature-count theater.",
+      h1: "Position PiCode around verifiable agentic development, not feature-count theater.",
       lede:
-        "This view converts mapped competitor research into strategic posture: Tachyon SWOT, market pressure axes, and bets that should guide benchmarks and devlogs.",
-      swotTitle: "Tachyon SWOT",
+        "This view converts mapped competitor research into strategic posture: PiCode SWOT, market pressure axes, and bets that should guide benchmarks and devlogs.",
+      swotTitle: "PiCode SWOT",
       strengths: "Strengths",
       weaknesses: "Weaknesses",
       opportunities: "Opportunities",
@@ -373,7 +373,7 @@ export const ui = {
           "The benchmark repo itself can become a credibility asset if artifacts stay reproducible.",
         ],
         weaknesses: [
-          "Public Tachyon implementation detail is intentionally sparse in this benchmark repo.",
+          "Public PiCode implementation detail is intentionally sparse in this benchmark repo.",
           "No public scored runs exist yet against the competitor set.",
           "Visual product narrative is less obvious than cockpit-first competitors.",
           "Acquisition history is early and currently observes stronger paid motion from Augment Code.",
@@ -405,7 +405,7 @@ export const ui = {
         },
         {
           title: "Publish the operating model",
-          body: "Use the public bench repo, screenshots, videos, and postmortems to make Tachyon's trust model legible.",
+          body: "Use the public bench repo, screenshots, videos, and postmortems to make PiCode's trust model legible.",
         },
         {
           title: "Separate Class A and Class B",
@@ -456,7 +456,7 @@ export const ui = {
     },
   },
   pt: {
-    metaDescription: "Dashboard estruturado de inteligência competitiva do Tachyon ADE Bench.",
+    metaDescription: "Dashboard estruturado de inteligência competitiva do ADE Bench.",
     skip: "Ir para o conteúdo",
     brandSubtitle: "inteligência competitiva",
     nav: {
@@ -556,7 +556,7 @@ export const ui = {
       next: {
         title: "Próximos Candidatos de Benchmark",
         description:
-          "Produtos mais próximos de uma primeira execução comparável, excluindo o perfil de referência Tachyon.",
+          "Produtos mais próximos de uma primeira execução comparável, excluindo o perfil de referência PiCode.",
         suggestedTasks: "Tarefas sugeridas",
       },
       discipline: {
@@ -738,7 +738,7 @@ export const ui = {
       blocks: [
         {
           title: "Battlecards",
-          body: "Cards no estilo Crayon/Klue para posicionamento, objeções e resposta do Tachyon.",
+          body: "Cards no estilo Crayon/Klue para posicionamento, objeções e resposta do PiCode.",
         },
         {
           title: "Imports digitais",
@@ -763,7 +763,7 @@ export const ui = {
       signal: "sinal",
       signals: "sinais",
       objections: "Objeções",
-      tachyonResponse: "Resposta do Tachyon",
+      productResponse: "Resposta do PiCode",
       sourceSignals: "Sinais fonteados",
       noSignals: "Nenhum sinal de inteligência competitiva está mapeado para este produto no momento.",
       nextAction: "Próxima ação",
@@ -779,10 +779,10 @@ export const ui = {
     strategy: {
       title: "Estratégia",
       eyebrow: "SWOT e pressão competitiva",
-      h1: "Posicione o Tachyon em desenvolvimento agentic verificável, não em teatro de contagem de features.",
+      h1: "Posicione o PiCode em desenvolvimento agentic verificável, não em teatro de contagem de features.",
       lede:
-        "Esta visão transforma a pesquisa de concorrentes em postura estratégica: SWOT do Tachyon, eixos de pressão de mercado e apostas para guiar benchmarks e devlogs.",
-      swotTitle: "SWOT do Tachyon",
+        "Esta visão transforma a pesquisa de concorrentes em postura estratégica: SWOT do PiCode, eixos de pressão de mercado e apostas para guiar benchmarks e devlogs.",
+      swotTitle: "SWOT do PiCode",
       strengths: "Forças",
       weaknesses: "Fraquezas",
       opportunities: "Oportunidades",
@@ -820,7 +820,7 @@ export const ui = {
           "O próprio benchmark público pode virar ativo de credibilidade se os artefatos forem reproduzíveis.",
         ],
         weaknesses: [
-          "Detalhes públicos de implementação do Tachyon são intencionalmente limitados neste repo.",
+          "Detalhes públicos de implementação do PiCode são intencionalmente limitados neste repo.",
           "Ainda não há runs públicos pontuados contra o conjunto de concorrentes.",
           "A narrativa visual do produto é menos óbvia que a de concorrentes cockpit-first.",
           "Histórico de aquisição ainda é inicial e hoje mostra paid motion mais forte em Augment Code.",
@@ -852,7 +852,7 @@ export const ui = {
         },
         {
           title: "Publicar o modelo operacional",
-          body: "Usar o bench público, screenshots, vídeos e postmortems para tornar o trust model do Tachyon legível.",
+          body: "Usar o bench público, screenshots, vídeos e postmortems para tornar o trust model do PiCode legível.",
         },
         {
           title: "Separar Classe A e Classe B",

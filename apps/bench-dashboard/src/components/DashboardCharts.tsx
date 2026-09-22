@@ -62,9 +62,9 @@ const SERIES_COLORS = [
   "#0f766e",
 ];
 
-/** Default radar compare set — always include Tachyon plus high-pressure Class A peers when present. */
+/** Default radar compare set — always include PiCode plus high-pressure Class A peers when present. */
 const DEFAULT_IDS = [
-  "tachyon",
+  "picode",
   "orca",
   "warp",
   "synara",
@@ -88,7 +88,7 @@ function readinessColor(value: string): string {
 }
 
 function colorForId(id: string, index: number): string {
-  if (id === "tachyon") return "#05746f";
+  if (id === "picode") return "#05746f";
   if (id === "orca") return "#9a6500";
   if (id === "fusion") return "#c45c26";
   if (id === "warp") return "#0f766e";

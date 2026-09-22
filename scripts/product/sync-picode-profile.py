@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sync claimed items from docs/product/capabilities.json into competitors/tachyon.json."""
+"""Sync claimed items from docs/product/capabilities.json into competitors/picode.json."""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 JSON_PATH = ROOT / "docs" / "product" / "capabilities.json"
-PROFILE_PATH = ROOT / "competitors" / "tachyon.json"
+PROFILE_PATH = ROOT / "competitors" / "picode.json"
 
 CAPABILITY_AXES = (
     "agent_support",
@@ -56,7 +56,7 @@ def main() -> int:
 
     sources = profile["research"].setdefault("sources", [])
     owned_doc = {
-        "url": "https://github.com/cfpperche/tachyon-ade-bench/tree/main/docs/product",
+        "url": "https://github.com/cfpperche/ade-bench/tree/main/docs/product",
         "kind": "owned",
         "notes": (
             "Owned canonical product surface (docs/product): overview, capabilities, "
@@ -78,7 +78,7 @@ def main() -> int:
     setup = profile.setdefault("setup_notes", [])
     sync_note = (
         "Edit docs/product/capabilities.json first, then run "
-        "scripts/product/sync-tachyon-profile.py."
+        "scripts/product/sync-picode-profile.py."
     )
     if sync_note not in setup:
         setup.append(sync_note)

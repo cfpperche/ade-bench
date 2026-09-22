@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/tachyon-ade-bench/marketing/scan-manifest.schema.json",
+  "$id": "https://example.invalid/ade-bench/marketing/scan-manifest.schema.json",
   "title": "Marketing Scan Manifest",
   "type": "object",
   "required": ["schema_version", "scan_id", "started_at", "tool_version", "git_commit", "queries", "limitations"],

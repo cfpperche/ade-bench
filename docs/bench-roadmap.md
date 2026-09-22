@@ -1,7 +1,7 @@
 # ADE Bench Near-Term Roadmap
 
 **Status:** draft for maintainer approval (recorded 2026-08-11)  
-**Scope:** this repository (`tachyon-ade-bench`) unless a row explicitly names the product monorepo  
+**Scope:** this repository (`ade-bench`) unless a row explicitly names the product monorepo  
 **Related:** `docs/competitor-runbook.md`, `docs/competitor-intelligence.md`, `docs/acquisition-roadmap.md` (acquisition only), `docs/run-report-metrics.md`
 
 This roadmap is **working intuition**, not a scored plan and not a substitute for Board tasks in the product repo. Refine by editing this file; do not let dashboard radar heuristics pretend to be delivery evidence.
@@ -11,7 +11,7 @@ This roadmap is **working intuition**, not a scored plan and not a substitute fo
 - **Roster honest and publishable** — public site is a static build from `main`; every new `competitors/*.json` needs an advertiser row and roster prose.
 - **Comparison language before pretty charts** — answer “guest CLI harness vs own agent loop” with structured data, not only conversation.
 - **Harness evidence > radar polygons** — capability radar is a feature-list heuristic; real quality lives in `runs/` + verifiers.
-- **Do not invent Tachyon features** in competitor JSON; product claims go `~/tachyon` (read) → `docs/product/` → sync scripts.
+- **Do not invent PiCode features** in competitor JSON; product claims go `~/picode` (read) → `docs/product/` → sync scripts.
 - **Agent pane / product composer work** is owned in the product monorepo when accepted there; this file only tracks the dependency so the bench does not steal that thread.
 
 ## Legend
@@ -72,7 +72,7 @@ Re-check each profile against official sources at fill time; this table is a sta
 
 | Model | Meaning | Initial peers (illustrative) |
 | --- | --- | --- |
-| **guest-cli** | Control plane; coding loop is external CLI (BYO) | Tachyon, Orca, Conductor, Emdash, Xirp, T3 Code, Synara, Hive, HiveTerm, Herdr, Maestri, AgentsRoom, OpenADE, Kandev, Overclock |
+| **guest-cli** | Control plane; coding loop is external CLI (BYO) | PiCode, Orca, Conductor, Emdash, Xirp, T3 Code, Synara, Hive, HiveTerm, Herdr, Maestri, AgentsRoom, OpenADE, Kandev, Overclock |
 | **hybrid** | First-party agent **and** third-party CLIs | Warp, JetBrains Air, Falou, Fusion, GitHub Copilot app |
 | **first-party** | Own agent loop is the primary coding path | Kiro; Augment Code (Class B platform) |
 
@@ -94,7 +94,7 @@ Notes:
 | **2.2** | Re-review **Xirp** when beta leaves macOS-only | P2 | OS matrix / readiness |
 | **2.3** | Watchlist only: HumanLayer; Macro adjacency (MCP workspace) | P2 | Macro already excluded |
 | **2.4** | Periodic `last_reviewed` for hot Class A (Warp, Kiro, Copilot app, Emdash, Xirp) | P2 | Follow competitor runbook |
-| **2.5** | Short battlecards: Tachyon vs Emdash / Xirp / Copilot app | P1 | `docs/competitive-intelligence.md` / intelligence layer |
+| **2.5** | Short battlecards: PiCode vs Emdash / Xirp / Copilot app | P1 | `docs/competitive-intelligence.md` / intelligence layer |
 
 ---
 
@@ -127,22 +127,14 @@ Acquisition-specific phases remain in `docs/acquisition-roadmap.md` — do not m
 
 ---
 
-## Phase 5 — Product monorepo dependency (Agent Pane composer)
+## Phase 5 — Product monorepo dependency (retired)
 
-**Status:** proposal relayed 2026-08-11 to product agent `claude-fork-2`  
-**Artifact:** `/tmp/tachyon-agent-pane-composer-proposal.md` (session-local; re-home under product docs if the product agent accepts)  
-**Bench role:** **do not implement** here unless the human reassigns.
+**Status:** closed 2026-09-22. The Tachyon-era agent-pane composer thread died
+with the Tachyon product; nothing in this repo tracks product-roadmap work.
 
-| ID | Item | Owner (suggested) | Notes |
-| --- | --- | --- | --- |
-| **5.1** | Viability reply (Q1 composer extension / Q2 hide native TUI bars) | Product agent | Guest loops stay Claude/Codex/Grok/… |
-| **5.2** | MVP: multi-line stage + single submit path + occupancy + layer 1 intact | Product | Extend layer 2; dual surface forever |
-| **5.3** | Superpowers: queue, pin→stage, input lock, inject markers | Product | After MVP |
-| **5.4** | Hide native CLI composer chrome | Product optional | **Not** MVP gate; measure per runtime |
-| **5.5** | Explicit non-goal: Tachyon-native agent loop (layer 3) | Product | Architecture note SoT |
-
-Product architecture SoT (read-only from this repo’s perspective):  
-`~/tachyon/docs/architecture/agent-pane-first-party-surface.md`
+**Bench role:** product work belongs to `~/picode` (read-only from here, and
+never edited by this repository). The bench depends on PiCode only as the owned
+reference product: `docs/product/` → `competitors/picode.json` → dashboard.
 
 ---
 
@@ -164,8 +156,8 @@ Later (Phase 3–4)
   3.3 fairness language
   4.x dashboard polish
 
-Parallel (Phase 5)
-  Product agent pane work — separate session/ownership
+Owned product (PiCode)
+  product work happens in ~/picode — read-only from this repo
 ```
 
 ### Default next actions if this roadmap is approved as-is
@@ -179,7 +171,7 @@ Parallel (Phase 5)
 
 | Avoid | Why |
 | --- | --- |
-| Scoring Tachyon vs Kiro without fixing guest/model | Compares ADE chrome to an owned AWS agent loop |
+| Scoring PiCode vs Kiro without fixing guest/model | Compares ADE chrome to an owned AWS agent loop |
 | Fattening JSON only to grow radar polygons | Heuristic, not harness evidence |
 | Treating “hide native TUI bar” as product P0 | Fragile across CLI versions |
 | Two agents implementing agent-pane in the same product worktree | Collision; product already has a proposed owner |
@@ -206,7 +198,7 @@ evidence, with a protocol Claude Code, Codex, and Grok Build can all run.
 
 | ID | Item | Priority | Done when |
 | --- | --- | --- | --- |
-| **6.1** | Inspectable roster = OSI license + `source_url` | P0 | `list-inspectable` lists the 11 OSS peers; Hive/BUSL and Tachyon/unknown stay out — **done** |
+| **6.1** | Inspectable roster = OSI license + `source_url` | P0 | `list-inspectable` lists the 11 OSS peers; Hive/BUSL and PiCode/PolyForm (owned-local only) stay out — **done** |
 | **6.2** | Feature catalog + static detectors + citation verifier | P0 | `inspect-check` + `harness/test_inspect.py` green — **done** |
 | **6.3** | Vendor-neutral agent prompt (`--mode agent`) | P0 | One prompt; `inspector.runtime` ∈ claude-code, codex, grok-build — **done** |
 | **6.4** | Live shallow clones of the 11 (optional, large) | P1 | Maintainer runs `inspect --product <id>` when disk/network allow |

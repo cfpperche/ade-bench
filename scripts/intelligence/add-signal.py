@@ -76,7 +76,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--tag", action="append", default=[])
     parser.add_argument("--impact", required=True, choices=["sales", "benchmark", "roadmap", "acquisition", "objection", "moat", "pricing"])
     parser.add_argument("--objection")
-    parser.add_argument("--tachyon-response", required=True)
+    parser.add_argument("--product-response", required=True)
     parser.add_argument("--next-action")
     return parser
 
@@ -115,7 +115,7 @@ def main() -> int:
             "source_type": args.source_type,
             "source_url": args.source_url,
             "summary": args.summary,
-            "tachyon_response": args.tachyon_response,
+            "product_response": args.product_response,
             "tags": clean_list(args.tag),
         }
     )

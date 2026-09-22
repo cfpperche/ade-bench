@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/tachyon-ade-bench/run-result.schema.json",
+  "$id": "https://example.invalid/ade-bench/run-result.schema.json",
   "title": "Run Result",
   "type": "object",
   "required": [

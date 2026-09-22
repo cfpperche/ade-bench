@@ -69,6 +69,20 @@ SKIP_DIRS = {
     "Pods",
 }
 
+# Directories dropped when an owned-local checkout is snapshot into runs/.
+# Clones (public-git) only carry tracked files, so this list only matters for
+# working trees, where build output and product runtime state dominate size.
+SNAPSHOT_IGNORE_DIRS = SKIP_DIRS | {
+    "bin",
+    "var",
+    ".claude",
+    ".omp",
+    ".pi",
+    ".picode",
+    ".worktrees",
+}
+SNAPSHOT_MAX_BYTES = 2 * 1024**3
+
 SKIP_SUFFIXES = {
     ".png",
     ".jpg",
@@ -483,6 +497,25 @@ def _copy_regular_file(src: str, dst: str, *, follow_symlinks: bool = True) -> N
         return
 
 
+def _prune_snapshot_ignore(_directory: str, names: list[str]) -> set[str]:
+    return {name for name in names if name in SNAPSHOT_IGNORE_DIRS}
+
+
+def snapshot_size_bytes(root: Path) -> int:
+    """Size of the tree a snapshot would keep, pruning SNAPSHOT_IGNORE_DIRS."""
+    total = 0
+    for dirpath, dirnames, filenames in os.walk(root):
+        dirnames[:] = [name for name in dirnames if name not in SNAPSHOT_IGNORE_DIRS]
+        for name in filenames:
+            path = Path(dirpath) / name
+            try:
+                if not path.is_symlink():
+                    total += path.stat().st_size
+            except OSError:
+                continue
+    return total
+
+
 def materialize_checkout(
     dest: Path,
     *,
@@ -497,19 +530,18 @@ def materialize_checkout(
     if checkout is not None:
         if not checkout.is_dir():
             raise FileNotFoundError(f"checkout path not found: {checkout}")
+        size = snapshot_size_bytes(checkout)
+        if size > SNAPSHOT_MAX_BYTES:
+            raise RuntimeError(
+                f"snapshot of {checkout} would be {size / 1024**3:.1f} GiB "
+                f"(limit {SNAPSHOT_MAX_BYTES / 1024**3:.0f} GiB) after ignoring "
+                f"{', '.join(sorted(SNAPSHOT_IGNORE_DIRS - SKIP_DIRS))}; "
+                "trim the working tree or extend SNAPSHOT_IGNORE_DIRS before inspecting."
+            )
         shutil.copytree(
             checkout,
             dest,
-            ignore=shutil.ignore_patterns(
-                ".git",
-                ".tachyon",
-                "node_modules",
-                "dist",
-                "out",
-                ".turbo",
-                ".next",
-                "coverage",
-            ),
+            ignore=_prune_snapshot_ignore,
             ignore_dangling_symlinks=True,
             copy_function=_copy_regular_file,
         )

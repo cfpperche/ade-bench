@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/tachyon-ade-bench/marketing/source-registry.schema.json",
+  "$id": "https://example.invalid/ade-bench/marketing/source-registry.schema.json",
   "title": "Marketing Source Registry",
   "type": "object",
   "required": ["schema_version", "updated_at", "sources"],

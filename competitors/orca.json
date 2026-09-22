@@ -186,7 +186,7 @@
     "moat": {
       "hypotheses": [
         "Open-source + high visibility creates distribution advantage.",
-        "Worktree-first fleet UX is a strong direct competitor to Tachyon's orchestration story.",
+        "Worktree-first fleet UX is a strong direct competitor to PiCode's orchestration story.",
         "Mobile and remote server surfaces expand use cases beyond local desktop."
       ],
       "evidence": [
@@ -195,7 +195,7 @@
         "Refresh 2026-07-21: GitHub lists 3.8k stars and the landing still positions Orca as an ADE for agent fleets."
       ],
       "unknowns": [
-        "Quality of verification gates and evidence capture compared with Tachyon remains unbenchmarked."
+        "Quality of verification gates and evidence capture compared with PiCode remains unbenchmarked."
       ]
     }
   },

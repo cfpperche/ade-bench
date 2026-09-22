@@ -25,6 +25,11 @@ CADENCES = {"weekly", "monthly", "manual"}
 SCAN_ID_RE = re.compile(r"^[0-9]{8}T[0-9]{6}Z$")
 DATE_TIME_HINT = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}T")
 
+# Products that left the roster after they were scanned. Historical scan
+# manifests and their normalized output may still name them; the advertiser
+# registry and every current-state file may not.
+RETIRED_PRODUCT_IDS = {"tachyon"}
+
 
 def read_json(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as handle:
@@ -169,7 +174,7 @@ def validate_manifest(path: Path, products: set[str], platforms: set[str]) -> li
                 continue
             if query.get("platform") not in platforms:
                 errors.append(f"{path}: {label}.platform unknown {query.get('platform')}")
-            if query.get("product_id") not in products:
+            if query.get("product_id") not in products | RETIRED_PRODUCT_IDS:
                 errors.append(f"{path}: {label}.product_id unknown {query.get('product_id')}")
             if query.get("result") not in {"found", "not-found", "partial", "blocked", None}:
                 errors.append(f"{path}: {label}.result is invalid")
@@ -183,7 +188,7 @@ def validate_normalized_scan(path: Path, products: set[str], platforms: set[str]
     required = {"schema_version", "scan_id", "product_id", "platform", "observed_at", "observations"}
     errors.extend(require_keys(path, data, required))
     errors.extend(reject_extra(path, data, required))
-    if data.get("product_id") not in products:
+    if data.get("product_id") not in products | RETIRED_PRODUCT_IDS:
         errors.append(f"{path}: product_id unknown {data.get('product_id')}")
     if data.get("platform") not in platforms:
         errors.append(f"{path}: platform unknown {data.get('platform')}")

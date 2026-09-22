@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/tachyon-ade-bench/intelligence/signal.schema.json",
+  "$id": "https://example.invalid/ade-bench/intelligence/signal.schema.json",
   "title": "Competitive Intelligence Signals",
   "type": "object",
   "required": ["schema_version", "updated_at", "signals"],
@@ -23,7 +23,7 @@
           "freshness",
           "tags",
           "impact",
-          "tachyon_response"
+          "product_response"
         ],
         "properties": {
           "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]+$" },
@@ -79,7 +79,7 @@
             "enum": ["sales", "benchmark", "roadmap", "acquisition", "objection", "moat", "pricing"]
           },
           "objection": { "type": ["string", "null"] },
-          "tachyon_response": { "type": "string" },
+          "product_response": { "type": "string" },
           "next_action": { "type": ["string", "null"] }
         },
         "additionalProperties": false

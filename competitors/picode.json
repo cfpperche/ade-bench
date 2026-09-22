@@ -1,0 +1,208 @@
+{
+  "id": "picode",
+  "name": "PiCode",
+  "class": "A-local-ade",
+  "homepage": "https://cfpperche.github.io/picode/",
+  "source_url": "https://github.com/cfpperche/picode",
+  "inspect_source": {
+    "kind": "owned-local",
+    "path": "~/picode",
+    "notes": "Owned reference product working tree on this machine. Public repo exists, but the snapshot path reads the local tree read-only into runs/ (build output and runtime state are pruned)."
+  },
+  "license": "PolyForm-Noncommercial-1.0.0",
+  "runner": {
+    "kind": "manual",
+    "notes": "Prepare a run worktree, launch a scratch PiCode instance pointed at it, provide prompt.md exactly, then run harness verification. Record the guest runtime (pi or guest CLI), model and data dir."
+  },
+  "inclusion": "Owned reference product under test.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "pi",
+    "claude-code",
+    "codex",
+    "grok-build",
+    "hermes",
+    "opencode",
+    "muse-code",
+    "antigravity",
+    "omp"
+  ],
+  "own_runtimes": [],
+  "runtime_model_notes": "Control plane only: managed agents are real user-installed pi processes (TUI in tmux or pi --mode rpc); the other eight CLIs run as interactive terminals. No first-party coding loop.",
+  "pricing_model": "free for noncommercial use; commercial licence on request",
+  "public_stack_signals": [
+    "Go daemon serving HTTPS/WS/SSE with React browser, desktop and mobile clients.",
+    "tmux-backed terminals plus pi RPC for structured chat; SQLite orchestration overlay while pi owns sessions and credentials.",
+    "PolyForm Noncommercial licence with MIT carve-outs on in-tree installable pi packages."
+  ],
+  "capabilities_to_probe": [
+    "browser supervision of a multi-agent fleet",
+    "human inbox for blocking questions and approvals",
+    "tmux session persistence across browser and daemon restarts",
+    "git review surfaces and composed (non-automatic) git actions",
+    "automations and delivery declarations",
+    "mobile PWA supervision"
+  ],
+  "moat_hypotheses": [
+    "Browser-first control of real terminal harnesses, without replacing them.",
+    "One inbox plus tmux persistence makes long-running fleets survivable for terminal-averse operators.",
+    "Local-first orchestration with vendor-owned state (pi owns sessions, auth and config)."
+  ],
+  "setup_notes": [
+    "Edit docs/product/capabilities.json first, then run scripts/product/sync-picode-profile.py.",
+    "Pin a release tag for reproducible comparisons; main is pre-alpha.",
+    "Use a scratch instance with an isolated data dir and tmux socket, and stop exact sessions after the run."
+  ],
+  "research": {
+    "last_reviewed": "2026-09-22",
+    "confidence": "owned",
+    "sources": [
+      {
+        "url": "https://github.com/cfpperche/ade-bench/tree/main/docs/product",
+        "kind": "owned",
+        "notes": "Owned canonical product surface (docs/product): overview, capabilities, architecture, workflows, limits, and capabilities.json SSOT."
+      },
+      {
+        "url": "https://github.com/cfpperche/picode",
+        "kind": "source-repo",
+        "notes": "Public product repository (README, docs/architecture, CHANGELOG); pre-alpha, PolyForm Noncommercial."
+      },
+      {
+        "url": "https://cfpperche.github.io/picode/",
+        "kind": "official-docs",
+        "notes": "Published user documentation (getting started, agent CLIs, files, delivery, automations, mobile, security, remote server)."
+      }
+    ],
+    "positioning": "Owned reference ADE for supervising real Pi agents from the browser: workspace agent fleets, tmux-backed terminals that outlive the tab, one human inbox, local-first orchestration, and mobile supervision.",
+    "stack": {
+      "runtime": [
+        "go daemon (stdlib-first)",
+        "tmux + pty bridge",
+        "pi --mode rpc jsonl bridge"
+      ],
+      "frontend": [
+        "react + vite browser app",
+        "react mobile pwa",
+        "tauri 2 / webview2 desktop shell (windows)"
+      ],
+      "backend": [
+        "https + websocket + sse",
+        "sqlite orchestration store (pure-go driver)",
+        "mcp servers and webhook dispatcher"
+      ],
+      "packaging": [
+        "single binary with embedded ui",
+        "systemd user unit (linux/wsl)",
+        "release assets + picode update"
+      ],
+      "data": [
+        "~/.picode/picode.db orchestration overlay",
+        "pi session jsonl (~/.pi/agent/sessions) stays authoritative",
+        "events table + sse change feed"
+      ],
+      "unknowns": [
+        "No published benchmark data on fleet-scale behaviour (how many concurrent agents stay usable).",
+        "Automation recipient wake and the deployment lane are visible debts in-repo, not shipped behaviour."
+      ]
+    },
+    "infrastructure": [
+      "Runs as a per-user daemon on Linux/WSL; the Windows desktop shell wraps a WSL server.",
+      "Agents execute in tmux sessions owned by the daemon's socket; closing the browser only detaches.",
+      "Orchestration state is local SQLite; conversations, credentials and configuration stay with pi and the vendor CLIs.",
+      "Optional shared-box gateway proxies tailnet identities to per-user daemons."
+    ],
+    "features": {
+      "agent_support": [
+        "real pi processes as the managed runtime",
+        "agent CLI catalog beyond pi",
+        "per-agent provider, model and thinking level",
+        "first-class sub-agent delegation"
+      ],
+      "orchestration": [
+        "agent fleet across workspaces",
+        "durable task delivery with steer and follow-up",
+        "human inbox for questions, approvals and results",
+        "inter-agent messaging broker",
+        "automations on cron or webhook",
+        "canvas board of agent, terminal, note, file and diff panels",
+        "own agent approval policy"
+      ],
+      "workspace_isolation": [
+        "per-agent working directory",
+        "tmux session per agent and per project shell",
+        "private per-agent pi session directory",
+        "git worktree visibility and composed worktree actions",
+        "agent sandboxing"
+      ],
+      "review_shipping": [
+        "working-tree review with per-agent attribution",
+        "file browse and edit with previews",
+        "commit DAG, refs and worktrees view",
+        "composed git actions with risk tiers",
+        "delivery declarations with integration observation",
+        "cross-CLI session handoff"
+      ],
+      "remote_mobile": [
+        "mobile PWA for supervision",
+        "push notifications implemented in-tree",
+        "per-device pairing",
+        "remote access on a private network",
+        "shared-box gateway",
+        "Windows desktop shell"
+      ],
+      "context_memory": [
+        "SQLite orchestration overlay",
+        "change feed over SSE",
+        "cross-CLI session read and write",
+        "per-CLI long-term memory panes",
+        "credential vault for provider accounts",
+        "backup and restore of PiCode data"
+      ],
+      "integrations": [
+        "MCP servers exposing PiCode tools",
+        "per-CLI connector configuration",
+        "signed webhooks",
+        "pi packages and installable pi extensions",
+        "browser extension to agent handoff",
+        "local model manager"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "owned-reference",
+      "install_surface": [
+        "owned PiCode scratch instance (isolated data dir + tmux socket)",
+        "benchmark prepared worktree",
+        "user-installed pi (or a guest CLI) with its own credentials"
+      ],
+      "parity_risks": [
+        "Owned product knowledge can bias prompts or manual intervention; keep prompts identical and record interventions.",
+        "tmux sessions and the orchestration database outlive a browser session: a run must use a scratch instance and stop exact sessions afterwards.",
+        "Managed Pi runs consume real provider credentials and real spend; the guest runtime and model dominate single-task correctness.",
+        "The docs-fixture daemon (synthetic store, no real agents) is a UI surface, not agent evidence.",
+        "Pre-alpha: pin a release tag, because main moves."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T004-ci-status-normalizer"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Browser-first supervision of real terminal harnesses can beat cockpit-only ADEs on intervention burden.",
+        "tmux persistence plus a single inbox is what makes unattended fleets plausible for non-terminal users.",
+        "Local-first, vendor-owned state (pi keeps sessions and credentials) is easier to trust than a hosted control plane."
+      ],
+      "evidence": [
+        "The product treats tmux terminals, the inbox and the change feed as operating primitives rather than UI niceties.",
+        "The public docs state the trust boundary explicitly: agents keep the user's permissions; PiCode does not sandbox them."
+      ],
+      "unknowns": [
+        "No scored run set exists yet against the competitor roster.",
+        "Fleet-scale limits (concurrent agents per daemon) are undocumented."
+      ]
+    }
+  },
+  "research_status": "owned-reference-v0.1",
+  "updated_at": "2026-09-22"
+}

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/tachyon-ade-bench/marketing/advertiser-registry.schema.json",
+  "$id": "https://example.invalid/ade-bench/marketing/advertiser-registry.schema.json",
   "title": "Marketing Advertiser Registry",
   "type": "object",
   "required": ["schema_version", "updated_at", "advertisers"],

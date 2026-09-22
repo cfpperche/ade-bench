@@ -56,8 +56,8 @@ export function getCompetitors(): Competitor[] {
     .filter((file) => file.endsWith(".json"))
     .map((file) => readJson<Competitor>(join(competitorsDir, file)))
     .sort((a, b) => {
-      if (a.id === "tachyon") return -1;
-      if (b.id === "tachyon") return 1;
+      if (a.id === "picode") return -1;
+      if (b.id === "picode") return 1;
       return a.name.localeCompare(b.name);
     });
 }
@@ -367,7 +367,7 @@ export function getStrategyPressureRows(): StrategyPressureRow[] {
     getAcquisitionBoardData().campaigns.map((campaign) => campaign.product_id),
   );
   return getCompetitors()
-    .filter((competitor) => competitor.id !== "tachyon")
+    .filter((competitor) => competitor.id !== "picode")
     .map((competitor) => {
       const hasAcquisitionSignal = acquisitionProducts.has(competitor.id);
       const axes = pressureAxes(competitor, hasAcquisitionSignal);
@@ -423,7 +423,7 @@ export function getIntelligenceBoardData(): IntelligenceBoardData {
     signalsByProduct.set(signal.product_id, current);
   }
   const battlecards: IntelligenceBattlecard[] = competitors
-    .filter((competitor) => competitor.id !== "tachyon")
+    .filter((competitor) => competitor.id !== "picode")
     .map((competitor) => {
       const signals = (signalsByProduct.get(competitor.id) ?? []).sort((a, b) =>
         a.category.localeCompare(b.category) || a.id.localeCompare(b.id),
@@ -445,7 +445,7 @@ export function getIntelligenceBoardData(): IntelligenceBoardData {
         objections: uniqueInOrder(signals.map((signal) => signal.objection).filter(Boolean) as string[]),
         positioning: competitor.research.positioning,
         readiness: competitor.research.benchmarking.readiness,
-        responses: uniqueInOrder(signals.map((signal) => signal.tachyon_response)),
+        responses: uniqueInOrder(signals.map((signal) => signal.product_response)),
         signals,
         sourceCount: competitor.research.sources.length,
         sourceUrl: competitor.source_url,

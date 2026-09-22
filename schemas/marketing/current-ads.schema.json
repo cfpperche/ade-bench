@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/tachyon-ade-bench/marketing/current-ads.schema.json",
+  "$id": "https://example.invalid/ade-bench/marketing/current-ads.schema.json",
   "title": "Marketing Current Ads",
   "type": "object",
   "required": ["schema_version", "generated_at", "ads"],

@@ -16,7 +16,7 @@
       "source_type": "manual-research",
       "source_url": "https://www.onorca.dev/",
       "summary": "Orca is positioned as a direct local ADE competitor with visible worktree/fleet pressure.",
-      "tachyon_response": "Lead with verification-first orchestration: show canonical verifiers, preserved diffs, and intervention burden instead of only cockpit breadth.",
+      "product_response": "Lead with verification-first orchestration: show canonical verifiers, preserved diffs, and intervention burden instead of only cockpit breadth.",
       "tags": [
         "class-a",
         "orchestration",
@@ -38,8 +38,8 @@
       "product_id": "agentsroom",
       "source_type": "manual-research",
       "source_url": "https://agentsroom.dev/pt",
-      "summary": "AgentsRoom pressures Tachyon on visual cockpit positioning.",
-      "tachyon_response": "Compare visible UX separately from reliability: Tachyon should show benchmark evidence, handoff quality, and reproducible task completion.",
+      "summary": "AgentsRoom pressures PiCode on visual cockpit positioning.",
+      "product_response": "Compare visible UX separately from reliability: PiCode should show benchmark evidence, handoff quality, and reproducible task completion.",
       "tags": [
         "ux",
         "cockpit",
@@ -62,7 +62,7 @@
       "source_type": "source-repo",
       "source_url": "https://github.com/kdlbs/kandev/blob/main/docs/features.md",
       "summary": "Kandev creates self-hosted packaging and workflow-control pressure.",
-      "tachyon_response": "Frame Tachyon around controlled local automation, verifier isolation, and auditable agent work rather than project-management breadth.",
+      "product_response": "Frame PiCode around controlled local automation, verifier isolation, and auditable agent work rather than project-management breadth.",
       "tags": [
         "self-hosted",
         "packaging",
@@ -85,7 +85,7 @@
       "source_type": "manual-research",
       "source_url": "https://www.augmentcode.com/",
       "summary": "Augment Code is strategic enterprise pressure rather than a clean Class A local ADE peer.",
-      "tachyon_response": "Separate enterprise platform comparisons from local ADE benchmarks and emphasize Tachyon's reproducible, repo-local evidence model.",
+      "product_response": "Separate enterprise platform comparisons from local ADE benchmarks and emphasize PiCode's reproducible, repo-local evidence model.",
       "tags": [
         "class-b",
         "enterprise",
@@ -104,11 +104,11 @@
       "next_action": "Add official pricing page observations per product, or record explicit absence when no pricing page is exposed.",
       "objection": "Pricing uncertainty can weaken buyer comparisons.",
       "observed_at": "2026-07-08",
-      "product_id": "tachyon",
+      "product_id": "picode",
       "source_type": "pricing-watch",
-      "source_url": "https://github.com/cfpperche/tachyon-ade-bench",
+      "source_url": "https://github.com/cfpperche/ade-bench",
       "summary": "Pricing and packaging require first-class watch records before battlecards are sales-ready.",
-      "tachyon_response": "Keep pricing unknowns visible and avoid implying free, cheap, or enterprise-only positioning without source-backed evidence.",
+      "product_response": "Keep pricing unknowns visible and avoid implying free, cheap, or enterprise-only positioning without source-backed evidence.",
       "tags": [
         "pricing-watch",
         "packaging",
@@ -126,11 +126,11 @@
       "next_action": "If a paid tool export becomes available, import product/channel observations as separate traffic, SEO, paid_search, backlink, or share_of_search signals.",
       "objection": "Competitors may appear to have stronger demand generation, but the repo lacks comparable digital-market data today.",
       "observed_at": "2026-07-08",
-      "product_id": "tachyon",
+      "product_id": "picode",
       "source_type": "tool-export",
-      "source_url": "https://github.com/cfpperche/tachyon-ade-bench",
+      "source_url": "https://github.com/cfpperche/ade-bench",
       "summary": "The repo is ready to store digital-market intelligence, but no paid traffic data is treated as evidence yet.",
-      "tachyon_response": "Use acquisition intelligence as context only; keep benchmark claims grounded in task artifacts.",
+      "product_response": "Use acquisition intelligence as context only; keep benchmark claims grounded in task artifacts.",
       "tags": [
         "similarweb",
         "semrush",
@@ -153,7 +153,7 @@
       "source_type": "official-site",
       "source_url": "https://www.onorca.dev/",
       "summary": "Orca positions its ADE as free and open source across macOS, Windows, and Linux.",
-      "tachyon_response": "Do not compete only on price; compare verifier evidence, intervention burden, and local automation governance.",
+      "product_response": "Do not compete only on price; compare verifier evidence, intervention burden, and local automation governance.",
       "tags": [
         "byos",
         "free",
@@ -176,7 +176,7 @@
       "source_type": "official-site",
       "source_url": "https://t3.codes/",
       "summary": "T3 Code presents itself as free, open source, MIT licensed, and bring-your-own-subscription.",
-      "tachyon_response": "Separate subscription pass-through from benchmark quality; show Tachyon's reproducible run artifacts and evidence model.",
+      "product_response": "Separate subscription pass-through from benchmark quality; show PiCode's reproducible run artifacts and evidence model.",
       "tags": [
         "byos",
         "free",
@@ -199,7 +199,7 @@
       "source_type": "official-site",
       "source_url": "https://agentsroom.dev/",
       "summary": "AgentsRoom advertises a free tier and a Pro plan, but current page copy should be rechecked before public pricing claims.",
-      "tachyon_response": "Use AgentsRoom pricing as a sourced caveat, not a normalized comparison, until the pricing copy is reconciled.",
+      "product_response": "Use AgentsRoom pricing as a sourced caveat, not a normalized comparison, until the pricing copy is reconciled.",
       "tags": [
         "byos",
         "free-tier",
@@ -222,7 +222,7 @@
       "source_type": "official-site",
       "source_url": "https://www.augmentcode.com/pricing",
       "summary": "Augment Code publishes a Business plan at $100/month flat for up to 50 seats plus Enterprise custom pricing.",
-      "tachyon_response": "Treat Augment as Class B enterprise pressure; compare pricing separately from local ADE benchmark leaderboards.",
+      "product_response": "Treat Augment as Class B enterprise pressure; compare pricing separately from local ADE benchmark leaderboards.",
       "tags": [
         "business-plan",
         "enterprise",
@@ -245,7 +245,7 @@
       "source_type": "official-site",
       "source_url": "https://hiveterm.com/",
       "summary": "HiveTerm publishes a Free tier and a Pro plan at $99/year with a 14-day trial.",
-      "tachyon_response": "Compare HiveTerm's price clarity with Tachyon's evidence and run reproducibility; do not treat low price as benchmark quality.",
+      "product_response": "Compare HiveTerm's price clarity with PiCode's evidence and run reproducibility; do not treat low price as benchmark quality.",
       "tags": [
         "annual",
         "byos",
@@ -268,7 +268,7 @@
       "source_type": "official-site",
       "source_url": "https://hivehq.dev/en/",
       "summary": "Hive is packaged as a local browser-based agent orchestrator with source-visible install path and BYO CLI logins.",
-      "tachyon_response": "Track Hive as source-available local packaging pressure; compare governance, verification, and benchmark artifacts rather than assuming price parity.",
+      "product_response": "Track Hive as source-available local packaging pressure; compare governance, verification, and benchmark artifacts rather than assuming price parity.",
       "tags": [
         "bsl",
         "byos",
@@ -291,7 +291,7 @@
       "source_type": "official-site",
       "source_url": "https://openade.ai/",
       "summary": "OpenADE presents itself as open source, free to download, no login/cloud, and 100% local/offline.",
-      "tachyon_response": "Answer with Tachyon's own local trust model plus benchmark evidence, not a feature-count claim.",
+      "product_response": "Answer with PiCode's own local trust model plus benchmark evidence, not a feature-count claim.",
       "tags": [
         "free",
         "local",
@@ -314,7 +314,7 @@
       "source_type": "source-repo",
       "source_url": "https://github.com/kdlbs/kandev",
       "summary": "Kandev's upstream repository describes it as open source, self-hostable, no telemetry, and AGPL-3.0 licensed.",
-      "tachyon_response": "Compare self-hosting with Tachyon's controlled local automation and verifier isolation; keep license and support model explicit.",
+      "product_response": "Compare self-hosting with PiCode's controlled local automation and verifier isolation; keep license and support model explicit.",
       "tags": [
         "agpl",
         "no-telemetry",
@@ -337,7 +337,7 @@
       "source_type": "official-site",
       "source_url": "https://runfusion.ai/",
       "summary": "Fusion (Runfusion) is a Class A open-source multi-agent software factory ADE with worktree isolation and plan/review gates.",
-      "tachyon_response": "Lead with verification-first evidence: identical tasks, intervention burden, preserved diffs, and task-owned verifiers rather than feature-surface breadth.",
+      "product_response": "Lead with verification-first evidence: identical tasks, intervention burden, preserved diffs, and task-owned verifiers rather than feature-surface breadth.",
       "tags": [
         "battlecard",
         "class-a",
@@ -361,7 +361,7 @@
       "source_type": "source-repo",
       "source_url": "https://github.com/Runfusion/Fusion",
       "summary": "Fusion ships MIT self-hosted packaging via npm, Homebrew, Electron, Capacitor, and Docker with BYO models.",
-      "tachyon_response": "Compete on reproducibility and trust of agent output, not install friction alone; publish install-to-verified-change evidence.",
+      "product_response": "Compete on reproducibility and trust of agent output, not install friction alone; publish install-to-verified-change evidence.",
       "tags": [
         "mit",
         "open-source",
@@ -384,7 +384,7 @@
       "source_type": "official-site",
       "source_url": "https://www.themaestri.app/en",
       "summary": "Maestri is a Class A macOS-native multi-agent orchestration canvas around BYO coding CLIs.",
-      "tachyon_response": "Separate canvas UX from verification-first delivery: show identical tasks, worktree evidence, and intervention burden.",
+      "product_response": "Separate canvas UX from verification-first delivery: show identical tasks, worktree evidence, and intervention burden.",
       "tags": [
         "battlecard",
         "canvas",
@@ -408,7 +408,7 @@
       "source_type": "official-site",
       "source_url": "https://herdr.dev/",
       "summary": "Herdr is a Class A terminal-native, worktree-aware multiplexer for heterogeneous coding agents.",
-      "tachyon_response": "Compare terminal density separately from delivery trust: publish identical-task verifier evidence, preserved diffs, and intervention burden.",
+      "product_response": "Compare terminal density separately from delivery trust: publish identical-task verifier evidence, preserved diffs, and intervention burden.",
       "tags": [
         "battlecard",
         "class-a",
@@ -432,7 +432,7 @@
       "source_type": "official-site",
       "source_url": "https://air.dev/",
       "summary": "JetBrains Air is a Class A proprietary desktop ADE for concurrent heterogeneous agents, isolated task execution, and code-aware review.",
-      "tachyon_response": "Answer with verification-first operational evidence: identical tasks, explicit agent/model metadata, controlled worktrees, task-owned verifiers, and auditable handoff rather than feature-count claims.",
+      "product_response": "Answer with verification-first operational evidence: identical tasks, explicit agent/model metadata, controlled worktrees, task-owned verifiers, and auditable handoff rather than feature-count claims.",
       "tags": [
         "agent-agnostic",
         "battlecard",
@@ -457,7 +457,7 @@
       "source_type": "official-site",
       "source_url": "https://air.dev/download",
       "summary": "JetBrains Air is a cross-platform desktop preview with JetBrains AI subscription and BYOK or supported personal-subscription access paths.",
-      "tachyon_response": "Keep packaging convenience separate from benchmark quality and make Tachyon's install-to-verified-change evidence explicit.",
+      "product_response": "Keep packaging convenience separate from benchmark quality and make PiCode's install-to-verified-change evidence explicit.",
       "tags": [
         "byok",
         "cross-platform",
@@ -488,7 +488,7 @@
       ],
       "impact": "sales",
       "objection": "Warp may look like the default terminal ADE for teams already in Warp, with free tier plus enterprise SSO/BYOLLM.",
-      "tachyon_response": "Compete on verification-first local multi-agent evidence and harness parity, not terminal polish alone; measure Warp Agent vs guest CLIs separately.",
+      "product_response": "Compete on verification-first local multi-agent evidence and harness parity, not terminal polish alone; measure Warp Agent vs guest CLIs separately.",
       "next_action": "Install Warp, run T001 with a fixed guest agent/model, and record credits plan plus local vs Oz cloud mode."
     },
     {
@@ -512,7 +512,7 @@
       ],
       "impact": "pricing",
       "objection": "Warp can undercut on free terminal entry while monetizing agent credits and enterprise controls.",
-      "tachyon_response": "Keep Warp pricing as Class A packaging pressure separate from scored task quality; publish install-to-verified-change cost notes when runs exist.",
+      "product_response": "Keep Warp pricing as Class A packaging pressure separate from scored task quality; publish install-to-verified-change cost notes when runs exist.",
       "next_action": "Re-check pricing page before any public pricing table."
     },
     {
@@ -537,7 +537,7 @@
       ],
       "impact": "sales",
       "objection": "Kiro may win teams that want AWS trust, structured specs, and one agent across IDE/CLI/web.",
-      "tachyon_response": "Answer with repo-local verifiers, evidence handoff, and intervention counts; do not mix web-sandbox runs into Class A local parity without caveats.",
+      "product_response": "Answer with repo-local verifiers, evidence handoff, and intervention counts; do not mix web-sandbox runs into Class A local parity without caveats.",
       "next_action": "Prefer local IDE/CLI for first T001 smoke; record credit tier and model."
     },
     {
@@ -561,7 +561,7 @@
       ],
       "impact": "pricing",
       "objection": "Predictable credit packaging with enterprise SSO can anchor procurement conversations.",
-      "tachyon_response": "Treat Kiro credits as packaging pressure; keep scored comparisons on identical tasks and evidence, not seat marketing.",
+      "product_response": "Treat Kiro credits as packaging pressure; keep scored comparisons on identical tasks and evidence, not seat marketing.",
       "next_action": "Refresh pricing before buyer-facing tables; note credit exhaustion mid-task risk."
     },
     {
@@ -586,7 +586,7 @@
       ],
       "impact": "sales",
       "objection": "Overclock may look more complete as a paid multi-pane maestro for teams already paying Claude/Codex/Gemini.",
-      "tachyon_response": "Compare orchestration UX separately from verification-first delivery; require merge-to-harness-worktree evidence before scoring.",
+      "product_response": "Compare orchestration UX separately from verification-first delivery; require merge-to-harness-worktree evidence before scoring.",
       "next_action": "Install on a supported OS, run T001 under Free or Squad mode, record plan tier and guest CLIs."
     },
     {
@@ -609,7 +609,7 @@
       ],
       "impact": "pricing",
       "objection": "Low cockpit subscription plus BYO tokens can feel cheaper than full agent SaaS seats.",
-      "tachyon_response": "Keep Overclock packaging as UX-subscription pressure; score only verified task outcomes with guest model cost noted separately.",
+      "product_response": "Keep Overclock packaging as UX-subscription pressure; score only verified task outcomes with guest model cost noted separately.",
       "next_action": "Confirm plan feature gates at install time before multi-agent claims."
     },
     {
@@ -634,7 +634,7 @@
       ],
       "impact": "sales",
       "objection": "Synara can undercut paid cockpits as a free multi-provider control plane without a product account.",
-      "tachyon_response": "Compete on audited handoff and task-owned verifiers; treat guest-agent correctness as a separate dimension from Synara chrome.",
+      "product_response": "Compete on audited handoff and task-owned verifiers; treat guest-agent correctness as a separate dimension from Synara chrome.",
       "next_action": "Install desktop or bun dev path; run T001/T003 with isolated worktrees recorded."
     },
     {
@@ -658,7 +658,7 @@
       ],
       "impact": "pricing",
       "objection": "Zero product price plus multi-provider support pressures paid ADE subscriptions.",
-      "tachyon_response": "Do not race only on free packaging; publish reproducible evidence quality and intervention burden.",
+      "product_response": "Do not race only on free packaging; publish reproducible evidence quality and intervention burden.",
       "next_action": "Track release cadence and Linux/macOS/Windows artifact matrix on GitHub Releases."
     },
     {
@@ -683,7 +683,7 @@
       ],
       "impact": "sales",
       "objection": "Falou may win Mac + PT-BR users who want voice control of coding agents without a traditional ADE cockpit.",
-      "tachyon_response": "Keep voice UX separate from verification quality; require local worktree/merge evidence before Class A scoring; do not confuse with Opus Hub ops product.",
+      "product_response": "Keep voice UX separate from verification quality; require local worktree/merge evidence before Class A scoring; do not confuse with Opus Hub ops product.",
       "next_action": "macOS install smoke on T001; record guest CLI and whether Squads isolation lands in harness tree."
     },
     {
@@ -707,7 +707,7 @@
       ],
       "impact": "pricing",
       "objection": "Free dictation plus BYOK agent path can feel zero-cost next to paid ADE seats.",
-      "tachyon_response": "Record actual plan limits at install; avoid public pricing claims until paywall is re-checked in-app.",
+      "product_response": "Record actual plan limits at install; avoid public pricing claims until paywall is re-checked in-app.",
       "next_action": "Re-open SPA pricing/plan UI after login before buyer-facing packaging tables."
     },
     {
@@ -732,7 +732,7 @@
       ],
       "impact": "sales",
       "objection": "Conductor may look more polished for review-to-PR shipping than research-stage ADE peers.",
-      "tachyon_response": "Match shipping workflow with verifier evidence and intervention counts; measure local and Cloud as separate parity modes.",
+      "product_response": "Match shipping workflow with verifier evidence and intervention counts; measure local and Cloud as separate parity modes.",
       "next_action": "macOS install path for T001 local mode; separate Cloud run if available."
     }
   ],

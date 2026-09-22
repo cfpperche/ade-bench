@@ -22,7 +22,7 @@ const openSourceVisible = competitors.filter(
   (competitor) => competitor.source_url || /mit|agpl|busl|open/i.test(competitor.license),
 ).length;
 const nextRuns = summaries
-  .filter((competitor) => competitor.id !== "tachyon")
+  .filter((competitor) => competitor.id !== "picode")
   .filter((competitor) => ["manual-ready", "needs-install"].includes(competitor.readiness))
   .slice(0, 5);
 const chartLabels = {

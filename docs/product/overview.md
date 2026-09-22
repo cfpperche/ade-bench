@@ -1,45 +1,64 @@
-# Tachyon overview
+# PiCode overview
 
-**Status:** owned draft surface for ADE Bench  
-**Last aligned with profile:** 2026-07-15
+**Status:** owned surface for ADE Bench (pre-alpha product)
+**Last aligned with profile:** 2026-09-22
 
-## Positioning
+PiCode is a **browser-based Agent Development Environment (ADE) for Pi coding
+agents**: one Go daemon serves a web UI that creates, configures and
+orchestrates real `pi` processes across workspaces.
 
-Tachyon is an **Agentic Development Environment (ADE)** oriented around:
+It is the **owned reference product** in this benchmark.
 
-- multi-agent software work on real repositories
-- **isolated worktrees** for delegated work
-- **evidence and handoff** that survive agent sessions
-- **verification gates** before accepting delivered change
+## What it is
 
-In this repository Tachyon is the **owned reference product** under test. Public
-homepage, source URL, license, and packaging are **not asserted** until a public
-product surface exists.
+- **Browser first.** The UI is the product surface; the terminal is one tab
+  away, not the entry point.
+- **Pi is not replaced.** Every managed agent is a user-installed `pi` process,
+  launched either as the genuine TUI inside tmux or as `pi --mode rpc`
+  structured chat.
+- **Local-first.** The daemon runs as a systemd user service on Linux/WSL;
+  orchestration state is a local SQLite file; provider credentials are the
+  user's own.
+- **Supervised, not unattended.** Blocking questions, approvals and finished
+  runs land in one human inbox, reachable from desktop or phone.
 
-## Product class
+## Class and runtime model
 
-- Class: `A-local-ade` (local / multi-agent ADE, not enterprise document AI)
-- Pricing model: depends on configured agent runtimes (not fixed in this repo)
+| Field | Value |
+| --- | --- |
+| Bench class | `A-local-ade` |
+| Runtime model | `guest-cli` — the coding loop belongs to `pi` and the guest CLIs; PiCode owns the control plane |
+| Guest runtimes | `pi` (managed: TUI or RPC), plus Claude Code, Codex, Grok, Hermes Agent, OpenCode, Muse Code, Antigravity, Omp as interactive terminals |
+| Readiness | `owned-reference` |
 
-## Audience
+## Who it is for
 
-- Teams that care more about **auditable agent operations** than about the
-  widest possible feature checklist
-- Operators who want the same task to be **reproducible** under a harness
-  (identical prompt, worktree, verifier)
+Solo developers running a few agents, terminal-averse users who still want
+direct control, and teams hosting agents on a machine they manage (via the
+optional shared-box gateway).
 
-## What “done” means for Tachyon work
+## Public surface
+
+- Repository: <https://github.com/cfpperche/picode>
+- Documentation: <https://cfpperche.github.io/picode/>
+- License: **PolyForm Noncommercial 1.0.0** (source-available, not OSI);
+  in-tree installable pi packages carry MIT where their own `LICENSE` says so.
+
+## Status caveats
+
+PiCode is **pre-alpha**: interfaces, storage migrations and installation paths
+may still change between releases. Pin a release tag for any reproducible
+comparison. See `limits-and-non-goals.md`.
+
+## What “done” means for PiCode work
 
 A change is not done when an agent stops talking. It is done when:
 
-1. the intended workspace contains the change,
-2. required evidence/handoff is preserved,
-3. an independent verification command can pass (bench or project gate).
+- the change is visible in the browser surfaces the product already ships
+  (chat or terminal, inbox, files/diff, delivery), and
+- the repository's own gates pass (`fmt-check`, `vet`, tests, docs parity), and
+- the changelog fragment and handoff note exist for user-visible changes, and
+- claims in this folder are updated when the capability surface changes.
 
-## Related docs
-
-- Capability surface: [capabilities.md](./capabilities.md) and
-  [capabilities.json](./capabilities.json)
-- Operating loops: [workflows.md](./workflows.md)
-- Architecture sketch: [architecture.md](./architecture.md)
-- Explicit non-claims: [limits-and-non-goals.md](./limits-and-non-goals.md)
+The bench adds one more gate: an identical task prompt, an independent
+verifier, and a recorded intervention count.

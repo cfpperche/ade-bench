@@ -14,7 +14,7 @@ that data instead of becoming the only place where claims live.
 
 The v0.1 roster covers software Agentic Development Environment competitors:
 
-- Tachyon
+- PiCode
 - Orca
 - Herdr
 - HiveTerm
@@ -60,7 +60,7 @@ Use official or owned sources for factual claims:
 - `source-repo`: upstream GitHub/GitLab repository files and READMEs.
 - `package-manifest`: package metadata such as `package.json`.
 - `app-store`: official app store listing.
-- `owned`: Tachyon-owned evidence or documentation.
+- `owned`: PiCode-owned evidence or documentation.
 
 Do not use community posts, launch comments, social posts, or search snippets as
 facts. They can be leads, but the recorded claim must point to an official
@@ -95,7 +95,7 @@ correctness often measures the guest agent more than the ADE when
 
 ## Confidence Levels
 
-- `owned`: Tachyon-owned reference data. Public reports should still avoid
+- `owned`: PiCode-owned reference data. Public reports should still avoid
   private implementation details unless a public source exists.
 - `official-sourced`: factual claims are backed by official sources reviewed in
   the current pass.
@@ -136,9 +136,9 @@ lists, and GitHub Pages publish, use `docs/competitor-runbook.md`.
 6. If the change affects comparison language, update
    `reports/competitor-map-v0.1.md`.
 
-### Tachyon special case
+### PiCode special case
 
-Agents may **read** the product monorepo at `~/tachyon` (or `cfpperche/tachyon`
+Agents may **read** the product monorepo at `~/picode` (or `cfpperche/picode`
 on GitHub) for grounding. They must **not write** to that repository. Durable
 rules live in root `AGENTS.md` and `CLAUDE.md`.
 
@@ -147,18 +147,18 @@ For bench-visible claims, write the owned product surface in this repo:
 - `docs/product/` (Markdown)
 - `docs/product/capabilities.json` (SSOT for radar axes)
 
-Do not invent Tachyon features only inside `competitors/tachyon.json`. Prefer:
+Do not invent PiCode features only inside `competitors/picode.json`. Prefer:
 
 ```sh
-# optional: read ~/tachyon for real capabilities (read only)
+# optional: read ~/picode for real capabilities (read only)
 # then edit docs/product/capabilities.json and docs
 python3 scripts/product/check-capabilities.py
-python3 scripts/product/sync-tachyon-profile.py
+python3 scripts/product/sync-picode-profile.py
 python3 harness/bench.py check
 ```
 
 Hierarchy: product repo (read) → `docs/product/` (write) →
-`competitors/tachyon.json` (derived) → dashboard.
+`competitors/picode.json` (derived) → dashboard.
 
 ## Benchmark Readiness
 
@@ -169,7 +169,7 @@ Use `research.benchmarking.readiness` consistently:
   exercised before scoring.
 - `enterprise-gated`: requires account, billing, enterprise setup, or hosted
   configuration that changes parity.
-- `owned-reference`: Tachyon reference profile.
+- `owned-reference`: PiCode reference profile.
 - `research-only`: keep in research docs but do not run as a software ADE
   competitor.
 
@@ -197,5 +197,5 @@ are not benchmark evidence.
 Battlecards, pricing-watch records, market observations, and imported
 third-party intelligence live in `docs/competitive-intelligence.md` and
 `intelligence/current/signals.json`. Use them to summarize positioning,
-objections, freshness, confidence, and Tachyon responses without bloating
+objections, freshness, confidence, and PiCode responses without bloating
 `competitors/*.json` with sales-facing analysis.

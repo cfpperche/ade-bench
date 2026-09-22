@@ -210,7 +210,7 @@
         "PRODUCT.md states primary users are developers/technical operators running ACP CLIs through a local daemon."
       ],
       "unknowns": [
-        "Head-to-head orchestration quality vs Hive/Fusion/Tachyon is unscored.",
+        "Head-to-head orchestration quality vs Hive/Fusion/PiCode is unscored.",
         "Stable v0.3 GA timing and long-term maintainer bandwidth are unknown.",
         "Depth of each named guest provider integration needs install-time verification."
       ]

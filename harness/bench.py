@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Minimal benchmark harness for Tachyon ADE Bench.
+"""Minimal benchmark harness for ADE Bench.
 
 The harness is intentionally dependency-free. It prepares task worktrees,
 captures product-independent verification artifacts, and performs lightweight
@@ -443,7 +443,7 @@ def prepare(args: argparse.Namespace) -> int:
     git(
         worktree,
         "-c",
-        "user.name=Tachyon ADE Bench",
+        "user.name=ADE Bench",
         "-c",
         "user.email=bench@example.invalid",
         "commit",
@@ -797,7 +797,7 @@ def inspect_run(args: argparse.Namespace) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Tachyon ADE Bench harness")
+    parser = argparse.ArgumentParser(description="ADE Bench harness")
     subcommands = parser.add_subparsers(dest="command", required=True)
 
     subcommands.add_parser("check", help="validate tracked benchmark metadata").set_defaults(func=check)

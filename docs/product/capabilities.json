@@ -1,123 +1,224 @@
 {
   "schema_version": "0.1",
-  "product_id": "tachyon",
-  "updated_at": "2026-07-15",
+  "product_id": "picode",
+  "updated_at": "2026-09-22",
   "confidence": "owned",
-  "notes": "Seeded from the existing owned competitor profile. Expand only with real product claims. claimed items are eligible for sync into competitors/tachyon.json.",
-  "positioning": "Owned reference ADE for audited multi-agent development, reproducible task worktrees, evidence capture, and verification-first handoff.",
+  "notes": "Owned PiCode surface, grounded in the read-only product tree at ~/picode (README, docs/, docs-site/, docs/architecture/) and the public repo. claimed items are eligible for sync into competitors/picode.json.",
+  "positioning": "Owned reference ADE for supervising real Pi agents from the browser: workspace agent fleets, tmux-backed terminals that outlive the tab, one human inbox, local-first orchestration, and mobile supervision.",
   "capabilities": {
     "agent_support": [
       {
-        "name": "configured local agent runtimes",
+        "name": "real pi processes as the managed runtime",
         "status": "claimed",
-        "summary": "Product runs against operator-configured local agent runtimes."
+        "summary": "Every agent is a user-installed pi process, launched either as the genuine TUI in tmux or as pi --mode rpc structured chat."
       },
       {
-        "name": "sub-agent workflows",
+        "name": "agent CLI catalog beyond pi",
         "status": "claimed",
-        "summary": "Work can be delegated to sub-agents within the owned product flow."
+        "summary": "Claude Code, Codex, Grok, Hermes Agent, OpenCode, Muse Code, Antigravity and Omp open interactive terminals with activity reporting where the vendor exposes a signal."
+      },
+      {
+        "name": "per-agent provider, model and thinking level",
+        "status": "claimed",
+        "summary": "Stored per agent and passed to pi as --provider/--model/--thinking; pi's own auth.json stays the credential source of truth."
+      },
+      {
+        "name": "first-class sub-agent delegation",
+        "status": "not-claimed",
+        "summary": "Core has no sub-agent routing; roles and delegation are opt-in pi packages (for example pi-roles), not daemon behaviour."
       }
     ],
     "orchestration": [
       {
-        "name": "multi-agent delegation",
+        "name": "agent fleet across workspaces",
         "status": "claimed",
-        "summary": "Tasks can be split across more than one agent role or step."
+        "summary": "Workspaces own agents (plus free agents outside a workspace), each with its own launch settings and working directory."
       },
       {
-        "name": "review handoff",
+        "name": "durable task delivery with steer and follow-up",
         "status": "claimed",
-        "summary": "Work returns through an explicit handoff/review path."
+        "summary": "A queued task with a prompt waits for the agent to settle; steer and follow_up reach an agent while a turn is still running."
       },
       {
-        "name": "task-specific verification",
+        "name": "human inbox for questions, approvals and results",
         "status": "claimed",
-        "summary": "Completion can require a task- or project-specific verification gate."
+        "summary": "Blocking questions and approvals, settled runs and unexpected exits collect in one inbox; TUI-sourced items are delivered inside the terminal."
+      },
+      {
+        "name": "inter-agent messaging broker",
+        "status": "claimed",
+        "summary": "An MCP server (list_contacts, send_message, read_messages, ack_messages) plus a durable peer mailbox lets named agents message each other."
+      },
+      {
+        "name": "automations on cron or webhook",
+        "status": "claimed",
+        "summary": "Per-rule schedules with deterministic jitter, webhook fire endpoint, run accounting, watchdog, cost cap and one catch-up run after an outage."
+      },
+      {
+        "name": "canvas board of agent, terminal, note, file and diff panels",
+        "status": "claimed",
+        "summary": "Named boards on a pan/zoom plane; edges grant a contact, never a transcript."
+      },
+      {
+        "name": "own agent approval policy",
+        "status": "not-claimed",
+        "summary": "PiCode surfaces the dialogs and permission prompts the runtime reports; an auto-approve policy is explicitly undecided."
       }
     ],
     "workspace_isolation": [
       {
-        "name": "git worktree isolation",
+        "name": "per-agent working directory",
         "status": "claimed",
-        "summary": "Delegated work can run in isolated git worktrees."
+        "summary": "A workspace registers a folder; an agent may carry its own workPath, and server-created work directories live under the PiCode data dir."
       },
       {
-        "name": "explicit owned path boundaries for delegated work",
+        "name": "tmux session per agent and per project shell",
         "status": "claimed",
-        "summary": "Agents are expected to stay within owned paths for a task."
+        "summary": "Closing the browser only detaches; the systemd unit's KillMode=process keeps tmux-owned terminals alive across daemon restarts."
+      },
+      {
+        "name": "private per-agent pi session directory",
+        "status": "claimed",
+        "summary": "Each agent gets its own session bucket in addition to the workspace cwd bucket."
+      },
+      {
+        "name": "git worktree visibility and composed worktree actions",
+        "status": "claimed",
+        "summary": "Reads the worktree graph per git-common-dir and composes create/prune/remove under <root>/.worktrees/<name> instead of acting silently."
+      },
+      {
+        "name": "agent sandboxing",
+        "status": "not-claimed",
+        "summary": "Explicit non-goal: agents execute with the invoking user's permissions, like pi itself; containers exist only in the shared-box gateway topology."
       }
     ],
     "review_shipping": [
       {
-        "name": "evidence records",
+        "name": "working-tree review with per-agent attribution",
         "status": "claimed",
-        "summary": "Durable evidence is part of accepting agent work."
+        "summary": "Porcelain status re-anchored to the owner cwd with per-file add/del counts, and an inspector rail that narrows to what this agent edited."
       },
       {
-        "name": "verification logs",
+        "name": "file browse and edit with previews",
         "status": "claimed",
-        "summary": "Verification output is retained as part of the delivery trail."
+        "summary": "Read/write text, blob and file routes, an editor with Save, and sandboxed HTML/markdown previews behind preview tickets."
       },
       {
-        "name": "human-readable handoff and review flow",
+        "name": "commit DAG, refs and worktrees view",
         "status": "claimed",
-        "summary": "Handoff is reviewable by a human operator."
+        "summary": "Commit graph with upstream/ahead/behind/gone/merged refs, remotes and worktrees, plus per-file patches read with --first-parent."
+      },
+      {
+        "name": "composed git actions with risk tiers",
+        "status": "claimed",
+        "summary": "Git writes are prepared as an exact command with a risk tier; tier C needs a typed phrase, and nothing auto-executes."
+      },
+      {
+        "name": "delivery declarations with integration observation",
+        "status": "claimed",
+        "summary": "Agents register revision-bound changes and request review; PiCode observes local refs and receipts and never merges, runs checks or publishes."
+      },
+      {
+        "name": "cross-CLI session handoff",
+        "status": "claimed",
+        "summary": "A handoff plan previews, repairs and writes a transcript or a markdown brief into the target CLI's own session store, with lineage recorded."
       }
     ],
     "remote_mobile": [
       {
-        "name": "not claimed in public competitor profile",
-        "status": "not-claimed",
-        "summary": "No remote/mobile product claim is exported to the public roster yet."
+        "name": "mobile PWA for supervision",
+        "status": "claimed",
+        "summary": "A four-tab phone app (Now, Inbox, Work, More) that installs from the browser and shares the same server as desktop."
+      },
+      {
+        "name": "push notifications implemented in-tree",
+        "status": "claimed",
+        "summary": "VAPID keys, per-message encryption and subscription routes in the standard library, fired for blocked agents, blocking inbox items and finished runs."
+      },
+      {
+        "name": "per-device pairing",
+        "status": "claimed",
+        "summary": "One-use codes with ten-minute expiry and lockout, cookie or bearer sessions, and revocable devices; sessions expire after long idleness."
+      },
+      {
+        "name": "remote access on a private network",
+        "status": "claimed",
+        "summary": "mkcert or Tailscale certificates with persisted bind and public-URL settings, plus server.json / remote.json discovery."
+      },
+      {
+        "name": "shared-box gateway",
+        "status": "claimed",
+        "summary": "A root unit maps tailnet identities to Linux users and proxies to per-user daemons, with an optional OIDC listener behind a TLS proxy."
+      },
+      {
+        "name": "Windows desktop shell",
+        "status": "claimed",
+        "summary": "Tauri 2 + WebView2 shell plus a tray/logon tool; the server itself still runs inside WSL."
       }
     ],
     "context_memory": [
       {
-        "name": "handoff context",
+        "name": "SQLite orchestration overlay",
         "status": "claimed",
-        "summary": "Context needed for handoff persists across steps."
+        "summary": "~/.picode/picode.db holds workspaces, agents, terminals, tasks, inbox, messages, events and settings; conversations stay in pi's own session files."
       },
       {
-        "name": "task evidence",
+        "name": "change feed over SSE",
         "status": "claimed",
-        "summary": "Task-level evidence remains available after agent turns."
+        "summary": "Every store mutation appends a typed event row in the same transaction and fans out over SSE, with a reset cursor past the retention window."
       },
       {
-        "name": "spec-driven development records when used",
+        "name": "cross-CLI session read and write",
         "status": "claimed",
-        "summary": "When SDD records are used, they can inform agent work."
+        "summary": "Watchers read each vendor's session store and writers publish new session artifacts atomically where the vendor allows it."
+      },
+      {
+        "name": "per-CLI long-term memory panes",
+        "status": "claimed",
+        "summary": "Memory tiers are declared per CLI (editable, readonly, none, unknown); unresolved stores report resolved=false and refuse instead of guessing."
+      },
+      {
+        "name": "credential vault for provider accounts",
+        "status": "claimed",
+        "summary": "AES-256-GCM vault under the PiCode data dir holds provider accounts for pi and the guest CLIs; pi's auth.json stays owned by pi."
+      },
+      {
+        "name": "backup and restore of PiCode data",
+        "status": "claimed",
+        "summary": "Snapshots cover the database, pinned artifacts, pi settings and optionally sessions and secrets; restore is an atomic swap and never touches project folders."
       }
     ],
     "integrations": [
       {
-        "name": "plugins",
+        "name": "MCP servers exposing PiCode tools",
         "status": "claimed",
-        "summary": "Extensibility via a plugin surface (owned product)."
+        "summary": "Families include computer, browser, inbox (notify_human, ask_human), checklist and delivery, with identity and daemon discovery from the environment."
       },
       {
-        "name": "host action governance",
+        "name": "per-CLI connector configuration",
         "status": "claimed",
-        "summary": "Host actions are treated as governed capabilities, not free-for-all."
+        "summary": "One pane writes each vendor's own MCP configuration file, with vendor-truthful scope rules instead of a synthetic shared registry."
       },
       {
-        "name": "repository-local verification commands",
+        "name": "signed webhooks",
         "status": "claimed",
-        "summary": "Project or bench verifiers can gate acceptance."
+        "summary": "Durable events become HMAC-SHA256 POSTs with ordered at-least-once retries, a request bound and link-local/metadata addresses refused."
+      },
+      {
+        "name": "pi packages and installable pi extensions",
+        "status": "claimed",
+        "summary": "A package pane covers pi and the guest CLIs, while in-tree MIT packages (pi-roles, pi-inbox, pi-checklist, pi-compact, pi-diff, pi-browser, pi-computer, pi-delivery, pi-sysadmin, connectors) stay installable."
+      },
+      {
+        "name": "browser extension to agent handoff",
+        "status": "claimed",
+        "summary": "An MV3 extension sideloads with a native-messaging host and sends page context to an existing agent, with an optional capped act-on-page loop."
+      },
+      {
+        "name": "local model manager",
+        "status": "claimed",
+        "summary": "An optional llama.cpp manager route runs a local model service alongside the daemon."
       }
     ]
-  },
-  "placeholders": [
-    {
-      "axis": "remote_mobile",
-      "name": "remote operator surface",
-      "status": "placeholder",
-      "summary": "TBD if/when product documents remote control."
-    },
-    {
-      "axis": "agent_support",
-      "name": "named third-party CLI matrix",
-      "status": "placeholder",
-      "summary": "Public list of supported vendor CLIs when product docs allow."
-    }
-  ]
+  }
 }

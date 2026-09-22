@@ -286,7 +286,7 @@ export interface IntelligenceSignal {
   source_type: string;
   source_url: string;
   summary: string;
-  tachyon_response: string;
+  product_response: string;
   tags: string[];
 }
 

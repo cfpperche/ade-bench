@@ -1,51 +1,49 @@
-# Tachyon architecture (owned sketch)
+# PiCode architecture (owned sketch)
 
-**Status:** owned, intentionally non-private  
+**Status:** owned, intentionally non-private
 **Purpose:** orient maintainers and benchmark operators without publishing
-internal implementation secrets.
+implementation detail that the public docs do not already carry.
 
-## Principles
+## Shape
 
-1. **Repo-local truth** — the working tree (or owned worktree) is the unit of
-   change under test.
-2. **Isolation before parallelism** — delegated agent work should not silently
-   collide with other tasks.
-3. **Evidence over chat** — durable artifacts (diffs, logs, handoff records)
-   matter more than transcript length.
-4. **Independent verification** — acceptance uses a gate outside the agent’s
-   self-report (project command or bench verifier).
-5. **Governed host power** — plugins and host actions are capability surfaces
-   that need explicit policy, not unbounded shell freedom as the product story.
+```text
+browser / desktop shell / phone PWA
+        │  HTTPS + WebSocket + SSE
+        ▼
+one Go daemon (picode)
+        ├── orchestration store: SQLite at ~/.picode/picode.db
+        ├── tmux (one session per agent, one per project shell) ── PTY ── pi TUI
+        ├── pi --mode rpc (JSONL stdio) ── structured chat for managed Pi agents
+        ├── git / files / previews / delivery observation
+        └── MCP servers, webhooks, automations, push
+```
 
-## Logical components (product-level)
+## Stack
 
-These names are conceptual for docs/bench alignment. Map them to real packages
-only when public or owned product docs allow.
-
-| Component | Responsibility |
+| Layer | What |
 | --- | --- |
-| Operator surface | How a human starts/steers work (CLI, app, or other — TBD public) |
-| Agent runtime adapters | Configured local agents / sub-agents |
-| Workspace manager | Worktrees, path boundaries, isolation |
-| Orchestration | Delegation, handoff, multi-step task flow |
-| Evidence store | Handoff records, verification logs, review artifacts |
-| Verification gate | Runs project/bench checks before “done” |
-| Plugin / host-action layer | Controlled extensions into the host environment |
+| Runtime | Go (module `github.com/cfpperche/picode`), stdlib-first; WebSocket, PTY, MCP SDK, pure-Go SQLite, chromedp |
+| Web | React + Vite + Tailwind workspaces for browser, desktop and mobile, xterm.js terminals |
+| Interactive processes | tmux sessions owned by the daemon's own tmux socket |
+| Storage | SQLite orchestration overlay; Pi session JSONL stays authoritative for conversations |
+| Transport | HTTPS (mkcert or Tailscale cert), WebSocket for terminals/agent events, SSE for the change feed |
+| Packaging | One binary with an embedded UI (or UI read from disk in dev); systemd user unit on Linux/WSL |
+| Desktop | Tauri 2 + WebView2 shell on Windows, with the server still in WSL |
 
-## Data the bench is allowed to see
+## Ownership boundary
 
-Aligned with the owned competitor profile:
+PiCode is deliberately a thin layer over Pi and the vendor CLIs:
 
-- prepared worktree state
-- run metadata (`result.json` and friends)
-- handoff / evidence records when produced
-- verification command output
+| Concern | Source of truth |
+| --- | --- |
+| Agent runtime | the user's installed `pi` |
+| Conversations | Pi session JSONL |
+| Credentials and Pi configuration | Pi's own auth/settings/package files |
+| Interactive processes | tmux |
+| Orchestration, inbox, delivery records | PiCode's SQLite database |
 
-## Explicit gaps
+## Non-goals (stated by the product)
 
-- Public homepage, source repo, license, and packaging: **not asserted**
-- Internal package graph, languages, and deploy topology: **owned/internal**
-  until published elsewhere
-
-Update this file when product architecture becomes publicly citable; prefer
-linking to the product monorepo docs over duplicating secrets here.
+- Re-implementing the Pi TUI — it is embedded instead.
+- Sandboxing agents — that is the runtime's trust model, not PiCode's.
+- Hiding Pi — every GUI action maps to something inspectable in the terminal.

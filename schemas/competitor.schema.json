@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/tachyon-ade-bench/competitor.schema.json",
+  "$id": "https://example.invalid/ade-bench/competitor.schema.json",
   "title": "Competitor Profile",
   "type": "object",
   "required": [
@@ -60,7 +60,7 @@
     },
     "inspect_source": {
       "type": "object",
-      "description": "How the source-inspection harness materializes a checkout. owned-local is for private product trees (e.g. ~/tachyon) and is not a public source_url.",
+      "description": "How the source-inspection harness materializes a checkout. owned-local is for private product trees (e.g. ~/picode) and is not a public source_url.",
       "required": ["kind"],
       "properties": {
         "kind": { "type": "string", "enum": ["owned-local", "public-git"] },

@@ -1,7 +1,7 @@
-# Tachyon ADE Bench
+# ADE Bench
 
-Tachyon ADE Bench is a reproducible benchmark harness for comparing Tachyon
-against other Agentic Development Environments.
+ADE Bench is a reproducible benchmark harness for comparing Agentic Development
+Environments. **PiCode** is the owned reference product in the roster.
 
 The repository starts with a conservative scope: prepare identical task
 worktrees, capture comparable run artifacts, and verify the final result with
@@ -13,7 +13,7 @@ has replayable evidence.
 The initial roster is limited to products that can reasonably compete with an
 agentic software development environment:
 
-- Tachyon
+- PiCode
 - Orca
 - Herdr
 - HiveTerm
@@ -56,7 +56,7 @@ python3 harness/bench.py list-inspectable
 python3 harness/bench.py list-tasks
 scripts/check-suite.sh
 
-python3 harness/bench.py prepare --product tachyon --task T001-python-bugfix --run-id local-smoke
+python3 harness/bench.py prepare --product picode --task T001-python-bugfix --run-id local-smoke
 
 # Point the product under test at runs/local-smoke/worktree and give it
 # runs/local-smoke/prompt.md.
@@ -97,8 +97,8 @@ Pages in repository settings with source "GitHub Actions"; pushes to `main`
 will publish the dashboard at:
 
 ```text
-https://cfpperche.github.io/tachyon-ade-bench/
-https://cfpperche.github.io/tachyon-ade-bench/pt/
+https://cfpperche.github.io/ade-bench/
+https://cfpperche.github.io/ade-bench/pt/
 ```
 
 To add or refresh competitors and get them on the live site, follow
@@ -114,27 +114,28 @@ CI gates, Pages verification).
 ## Repository layout
 
 ```text
-AGENTS.md      Agent instructions (read ~/tachyon, write only here)
+AGENTS.md      Agent instructions (read ~/picode, write only here)
 CLAUDE.md      Claude Code context entrypoint
 competitors/   Seed profiles for products under test
 apps/          Static dashboard and presentation surfaces
-docs/product/  Owned canonical Tachyon product surface (SSOT)
+docs/product/  Owned canonical PiCode product surface (SSOT)
 docs/specs/    Spec-driven development records for benchmark changes
 harness/       Local reproducibility tooling
 inspect/       OSS source-inspection catalog, prompt, and fixtures
 marketing/     Acquisition-intelligence registries, scans, and summaries
 reports/       Human-readable benchmark summaries
+reports/archive/  Retired artifacts (Tachyon-era records)
 runs/          Ignored local run outputs
 schemas/       JSON schemas for tracked benchmark documents
-scripts/product/  Validate/sync Tachyon capabilities SSOT
+scripts/product/  Validate/sync PiCode capabilities SSOT
 tasks/         Versioned benchmark tasks and fixtures
 ```
 
 Research docs:
 
-- `docs/product/` is the owned canonical Tachyon product surface
-  (`capabilities.json` SSOT; sync into `competitors/tachyon.json` via
-  `scripts/product/sync-tachyon-profile.py`).
+- `docs/product/` is the owned canonical PiCode product surface
+  (`capabilities.json` SSOT; sync into `competitors/picode.json` via
+  `scripts/product/sync-picode-profile.py`).
 - `docs/competitor-intelligence.md` covers stack, infrastructure, features,
   moat hypotheses, and benchmark caveats.
 - `docs/acquisition-intelligence.md` covers paid channels, launch surfaces,
@@ -146,11 +147,11 @@ Research docs:
 - `docs/run-report-metrics.md` defines the run-level indicators required before
   any scored leaderboard.
 
-Tachyon product surface checks:
+PiCode product surface checks:
 
 ```sh
 python3 scripts/product/check-capabilities.py
-python3 scripts/product/sync-tachyon-profile.py
+python3 scripts/product/sync-picode-profile.py
 python3 harness/bench.py check
 ```
 

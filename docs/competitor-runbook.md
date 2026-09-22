@@ -11,14 +11,14 @@ Related docs (do not replace them):
 | `competitors/README.md` | What a profile file is |
 | `schemas/competitor.schema.json` | Machine contract for `competitors/*.json` |
 | `docs/acquisition-intelligence.md` | Ads/scans (separate from technical claims) |
-| `AGENTS.md` | Bench write scope; product repo `~/tachyon` is read-only |
+| `AGENTS.md` | Bench write scope; product repo `~/picode` is read-only |
 
 Public site:
 
 ```text
-https://cfpperche.github.io/tachyon-ade-bench/
-https://cfpperche.github.io/tachyon-ade-bench/competitors/
-https://cfpperche.github.io/tachyon-ade-bench/pt/competitors/
+https://cfpperche.github.io/ade-bench/
+https://cfpperche.github.io/ade-bench/competitors/
+https://cfpperche.github.io/ade-bench/pt/competitors/
 ```
 
 ---
@@ -49,16 +49,16 @@ Hard facts agents get wrong:
    `README.md`, and `SPEC.md` lying about who is in scope.
 4. **Do not invent features** to fatten radar heuristics. Unknowns go in
    `research.stack.unknowns` / `research.moat.unknowns`.
-5. **Write only in this repo** (`tachyon-ade-bench`). Never edit `~/tachyon`
-   for competitor work. Tachyon claims: `docs/product/` → sync scripts →
-   `competitors/tachyon.json`.
+5. **Write only in this repo** (`ade-bench`). Never edit `~/picode`
+   for competitor work. PiCode claims: `docs/product/` → sync scripts →
+   `competitors/picode.json`.
 
 ---
 
 ## 0. Preconditions
 
 ```sh
-cd /path/to/tachyon-ade-bench
+cd /path/to/ade-bench
 git status -sb
 git fetch origin
 git checkout main
@@ -230,13 +230,13 @@ Pushing **`main`** is what triggers `.github/workflows/pages.yml`.
 6. Run the validation block in §1.5.
 7. Commit + push `main` (§1.6).
 
-**Tachyon-only path** (do not hand-edit features into the JSON as fiction):
+**PiCode-only path** (do not hand-edit features into the JSON as fiction):
 
 ```sh
-# read ~/tachyon (read-only) if needed, then:
+# read ~/picode (read-only) if needed, then:
 # edit docs/product/capabilities.json and related docs
 python3 scripts/product/check-capabilities.py
-python3 scripts/product/sync-tachyon-profile.py
+python3 scripts/product/sync-picode-profile.py
 python3 harness/bench.py check
 ```
 
@@ -294,7 +294,7 @@ Job steps (must all pass):
 
 ```sh
 SHA=$(git rev-parse --short HEAD)
-BASE="https://cfpperche.github.io/tachyon-ade-bench"
+BASE="https://cfpperche.github.io/ade-bench"
 NAME="<Name>"   # e.g. Warp
 ID="<id>"       # e.g. warp
 
@@ -421,7 +421,7 @@ python3 harness/bench.py check \
 python3 harness/bench.py list-products
 
 # after main push — watch latest Pages run (needs network)
-# https://github.com/cfpperche/tachyon-ade-bench/actions/workflows/pages.yml
+# https://github.com/cfpperche/ade-bench/actions/workflows/pages.yml
 ```
 
 Done means: **green Pages run on the commit that contains your profile**, and

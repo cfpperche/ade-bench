@@ -1,6 +1,6 @@
 # Benchmark Protocol v0
 
-This document defines the first reproducible protocol for Tachyon ADE Bench.
+This document defines the first reproducible protocol for ADE Bench.
 
 ## Goal
 
@@ -17,7 +17,7 @@ The benchmark asks:
 
 Class A products are direct local or multi-agent ADE competitors:
 
-- Tachyon
+- PiCode
 - Orca
 - Herdr
 - HiveTerm

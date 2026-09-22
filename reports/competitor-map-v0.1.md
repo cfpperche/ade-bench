@@ -1,6 +1,6 @@
 # Competitor Map v0.1
 
-Reviewed: 2026-08-12 (Paseo catalog; prior: Xirp/Emdash/Copilot app/Compozy; AgentsRoom enrichment; Macro excluded)
+Reviewed: 2026-09-22 (PiCode replaces the retired Tachyon reference profile; prior: Paseo catalog, Xirp/Emdash/Copilot app/Compozy, AgentsRoom enrichment, Macro excluded)
 
 This is a research map, not a scored benchmark. It summarizes official-source
 claims captured in `competitors/*.json` so we can choose fair benchmark runs
@@ -15,7 +15,7 @@ Single-task scores on `guest-cli` products largely measure the guest agent.
 
 | Product | Class | Runtime | Stack / Infra Signals | Feature Surface | Moat Hypothesis | Benchmark Readiness |
 | --- | --- | --- | --- | --- | --- | --- |
-| Tachyon | A-local-ade | `guest-cli` | Owned reference profile; public stack intentionally not asserted yet. Benchmark-visible model is worktrees, evidence, handoff, and verification gates. | Multi-agent delegation, worktree isolation, evidence records, verification-first handoff, plugin/host-action governance. | Trust through auditable operations and verification-first delivery. | `owned-reference`; run as baseline/reference, avoid private public claims. |
+| PiCode | A-local-ade | `guest-cli` | Go daemon (stdlib-first) serving HTTPS/WS/SSE with React browser, desktop and mobile clients; tmux-backed terminals plus `pi --mode rpc`; SQLite orchestration overlay while pi owns sessions/credentials; source-available, PolyForm Noncommercial (non-OSI). | Workspace agent fleets, human inbox for questions/approvals/results, inter-agent messaging broker, cron/webhook automations, canvas board, files/diff/git review with composed actions, delivery declarations, cross-CLI session handoff, mobile PWA with push, shared-box gateway. | Browser-first supervision of real terminal harnesses with local-first, vendor-owned state; tmux persistence plus one inbox. | `owned-reference`; pin a release tag, run from a scratch instance, stop exact tmux sessions after the run, and record guest runtime/model. |
 | Orca | A-local-ade | `guest-cli` | TypeScript/Electron/React/Vite desktop, node-pty/xterm, CLI/server (~1.4.x rc), git worktrees, remote server/SSH; high GH activity. | Fleet of parallel CLI agents, worktrees, diff annotations, browser/design mode, GitHub/Linear, mobile companion, remote server. | Open-source visibility plus worktree-first fleet UX across desktop/mobile/remote. | `manual-ready`; start with T001, T003, T005. |
 | Herdr | A-local-ade | `guest-cli` | Rust single binary, ratatui/PTY runtime, Unix socket NDJSON API, AGPL; no Electron. | Terminal multiplexer for coding agents, semantic agent state, worktrees, plugins, SSH/mobile attach, agent skill API. | Terminal-native PTY + agent-shaped control surface with broad CLI detection. | `manual-ready`; record guest agent/model separately from Herdr runtime. |
 | JetBrains Air | A-local-ade | `hybrid` | Proprietary desktop preview for macOS/Windows/Linux; local agent harnesses, Git worktrees, Docker on macOS/Windows, ACP; closed-source internals remain unknown. | Concurrent Codex/Claude/Gemini/Junie/ACP tasks, plan files, code-aware context, diff comments, permissions, cross-agent review, JetBrains IDE handoff. | JetBrains distribution and code intelligence around an agent-agnostic isolated task/review control plane. | `needs-install`; Linux via Toolbox; start with T001, T003, T005 and record guest agent/model separately. |
@@ -44,7 +44,7 @@ Single-task scores on `guest-cli` products largely measure the guest agent.
 
 Use Class A for the first direct comparison:
 
-- Tachyon
+- PiCode
 - Orca
 - Herdr
 - JetBrains Air
@@ -77,7 +77,7 @@ coding multi-agent ADE control plane).
 
 ## Source Index
 
-- Tachyon: owned reference profile in this repository.
+- PiCode: owned reference profile; https://github.com/cfpperche/picode, https://cfpperche.github.io/picode/, owned surface in this repo under `docs/product/`
 - Orca: https://github.com/stablyai/orca, https://raw.githubusercontent.com/stablyai/orca/main/package.json, https://www.onorca.dev/docs/remote-servers, https://www.onorca.dev/docs/agents/custom-cli
 - Herdr: https://herdr.dev/, https://github.com/ogulcancelik/herdr, https://herdr.dev/docs/socket-api/, https://herdr.dev/docs/agent-skill/, https://formulae.brew.sh/formula/herdr
 - JetBrains Air: https://air.dev/, https://air.dev/download, https://air.dev/changelog, https://blog.jetbrains.com/air/2026/03/air-launches-as-public-preview-a-new-wave-of-dev-tooling-built-on-26-years-of-experience/, https://blog.jetbrains.com/air/2026/06/jetbrains-air-lands-on-windows/, https://blog.jetbrains.com/air/2026/07/what-s-new-air-gets-more-agents-local-models-and-java-kotlin-code-intelligence/

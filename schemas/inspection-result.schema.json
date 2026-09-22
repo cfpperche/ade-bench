@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/tachyon-ade-bench/inspection-result.schema.json",
+  "$id": "https://example.invalid/ade-bench/inspection-result.schema.json",
   "title": "Source Inspection Result",
   "type": "object",
   "required": [

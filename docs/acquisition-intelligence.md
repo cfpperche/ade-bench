@@ -13,7 +13,7 @@ review queue, and scan history to scheduled monitoring and reporting.
 Track acquisition evidence for the same software ADE roster used by
 `competitors/`:
 
-- Tachyon
+- PiCode
 - Orca
 - Herdr
 - HiveTerm

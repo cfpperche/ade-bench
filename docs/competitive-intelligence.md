@@ -15,7 +15,7 @@ Tracked primitives:
 
 - competitor positioning
 - likely objections
-- Tachyon response
+- PiCode response
 - evidence links
 - confidence level
 - freshness status
@@ -162,7 +162,7 @@ python3 scripts/intelligence/add-signal.py \
   --freshness watch \
   --tag pricing-watch \
   --impact objection \
-  --tachyon-response "Keep pricing evidence separate from benchmark claims."
+  --product-response "Keep pricing evidence separate from benchmark claims."
 ```
 
 Validate the intelligence layer:

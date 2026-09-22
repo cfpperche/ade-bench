@@ -1,4 +1,9 @@
-# Tachyon Baseline v0.1
+# Tachyon Baseline v0.1 (archived)
+
+> Archived 2026-09-22: recorded while Tachyon was the owned reference product.
+> Tachyon development stopped; the reference product is now PiCode
+> (`docs/product/`, `competitors/picode.json`). Kept as history — do not
+> re-read these runs as PiCode evidence.
 
 Generated on 2026-07-07.
 

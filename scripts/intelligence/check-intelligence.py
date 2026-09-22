@@ -101,7 +101,7 @@ def validate_signal(path: Path, signal: Any, index: int, products: set[str], see
         "freshness",
         "tags",
         "impact",
-        "tachyon_response",
+        "product_response",
     }
     allowed = required | {"details", "evidence_path", "objection", "next_action"}
     for key in sorted(required - set(signal)):
@@ -135,7 +135,7 @@ def validate_signal(path: Path, signal: Any, index: int, products: set[str], see
 
     expect_string(path, f"{label}.source_url", signal.get("source_url"), errors, uri=True)
     expect_string(path, f"{label}.summary", signal.get("summary"), errors)
-    expect_string(path, f"{label}.tachyon_response", signal.get("tachyon_response"), errors)
+    expect_string(path, f"{label}.product_response", signal.get("product_response"), errors)
     expect_string_list(path, f"{label}.tags", signal.get("tags"), errors)
     for optional in ["details", "evidence_path", "objection", "next_action"]:
         expect_string_or_null(path, f"{label}.{optional}", signal.get(optional), errors)

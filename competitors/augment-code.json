@@ -129,7 +129,7 @@
       "workspace_isolation": [
         "local MCP indexes active working directory",
         "remote MCP indexes selected repositories/default branches",
-        "not a local worktree fleet product in the same class as Orca/Kandev/Tachyon"
+        "not a local worktree fleet product in the same class as Orca/Kandev/PiCode"
       ],
       "review_shipping": [
         "Augment Code Review",

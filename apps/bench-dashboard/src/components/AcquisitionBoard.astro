@@ -1,5 +1,5 @@
 ---
-import { getAcquisitionBoardData } from "../lib/data";
+import { getAcquisitionBoardData, getCompetitors } from "../lib/data";
 import { label } from "../lib/format";
 import { getUi, type Locale } from "../lib/i18n";
 import { url } from "../lib/routes";
@@ -12,9 +12,12 @@ interface Props {
 const { locale } = Astro.props;
 const t = getUi(locale);
 const board = getAcquisitionBoardData();
+// Historical scans may name products that already left the roster; those rows
+// keep their evidence but must not link to a profile page that no longer exists.
+const competitorIds = new Set(getCompetitors().map((competitor) => competitor.id));
 const dateLocale = locale === "pt" ? "pt-BR" : "en-US";
 const statusOrder: AcquisitionResult[] = ["found", "partial", "blocked", "not-found"];
-const repoBlobBase = "https://github.com/cfpperche/tachyon-ade-bench/blob/main/";
+const repoBlobBase = "https://github.com/cfpperche/ade-bench/blob/main/";
 
 function formatDate(value: string | null | undefined): string {
   if (!value) {
@@ -109,9 +112,13 @@ const limitations = board.latestScan?.limitations ?? [];
             {board.coverageRows.map((row) => (
               <tr>
                 <td>
-                  <a class="link" href={url(`/competitors/${row.product_id}/`, locale)}>
-                    {row.product_name}
-                  </a>
+                  {competitorIds.has(row.product_id) ? (
+                    <a class="link" href={url(`/competitors/${row.product_id}/`, locale)}>
+                      {row.product_name}
+                    </a>
+                  ) : (
+                    <span>{row.product_name}</span>
+                  )}
                   <span class="table-note">{platformLabel(row.platform)}</span>
                 </td>
                 <td>{row.query}</td>

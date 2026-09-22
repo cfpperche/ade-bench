@@ -7,7 +7,7 @@
   "license": "proprietary",
   "runner": {
     "kind": "manual",
-    "notes": "macOS-only desktop app. Install agents (Claude Code, Codex, OpenCode, etc.) first, open the prepared harness worktree as a Maestri workspace working directory, create terminals for the agent(s), provide prompt.md, then run harness verification. Record guest agent/model separately from Maestri. Floors use APFS copy-on-write clones, not the same semantics as git worktree isolation in Orca/Tachyon."
+    "notes": "macOS-only desktop app. Install agents (Claude Code, Codex, OpenCode, etc.) first, open the prepared harness worktree as a Maestri workspace working directory, create terminals for the agent(s), provide prompt.md, then run harness verification. Record guest agent/model separately from Maestri. Floors use APFS copy-on-write clones, not the same semantics as git worktree isolation in Orca/PiCode."
   },
   "inclusion": "Direct Class A ADE competitor: native macOS orchestration canvas around BYO coding-agent CLIs with inter-agent PTY connections, workspace floors, and local-first privacy posture.",
   "runtime_model": "guest-cli",
@@ -203,7 +203,7 @@
       ],
       "parity_risks": [
         "macOS-only product; cannot be run on typical Linux CI hosts without a Mac runner.",
-        "APFS floors isolation is not the same as git worktree race/merge semantics used by Orca/Fusion/Tachyon probes.",
+        "APFS floors isolation is not the same as git worktree race/merge semantics used by Orca/Fusion/PiCode probes.",
         "Spatial orchestration and agent-to-agent PTY may not exercise plan/verify/merge gates the suite optimizes for.",
         "Closed source: stack claims limited to official site/docs; no source_url.",
         "Guest agent quality dominates single-task correctness; measure Maestri as orchestration environment, not as the coding model."

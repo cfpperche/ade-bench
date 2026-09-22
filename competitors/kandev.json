@@ -197,7 +197,7 @@
         "Feature docs list workflow boards, ACP agents, worktrees, executors, integrations, and MCP."
       ],
       "unknowns": [
-        "How much review/evidence Kandev captures compared with Tachyon should be measured, not inferred."
+        "How much review/evidence Kandev captures compared with PiCode should be measured, not inferred."
       ]
     }
   },

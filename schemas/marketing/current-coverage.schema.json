@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/tachyon-ade-bench/marketing/current-coverage.schema.json",
+  "$id": "https://example.invalid/ade-bench/marketing/current-coverage.schema.json",
   "title": "Marketing Current Coverage",
   "type": "object",
   "required": ["schema_version", "generated_at", "products", "platforms"],

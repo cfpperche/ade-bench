@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/tachyon-ade-bench/marketing/raw-scan.schema.json",
+  "$id": "https://example.invalid/ade-bench/marketing/raw-scan.schema.json",
   "title": "Marketing Raw Scan",
   "type": "object",
   "required": ["source_url", "ads"],
