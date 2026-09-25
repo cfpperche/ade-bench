@@ -42,6 +42,7 @@ Class A products are direct local or multi-agent ADE competitors:
 - Paseo
 - Devin
 - OpenHands
+- Paperclip
 
 Class B products are enterprise agentic platforms:
 

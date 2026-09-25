@@ -1,6 +1,6 @@
 # Competitor Map v0.1
 
-Reviewed: 2026-09-25 (Devin and OpenHands catalog; prior 2026-09-22: PiCode replaces the retired Tachyon reference profile; prior: Paseo catalog, Xirp/Emdash/Copilot app/Compozy, AgentsRoom enrichment, Macro excluded)
+Reviewed: 2026-09-25 (Devin, OpenHands, Paperclip catalog; prior 2026-09-22: PiCode replaces the retired Tachyon reference profile; prior: Paseo catalog, Xirp/Emdash/Copilot app/Compozy, AgentsRoom enrichment, Macro excluded)
 
 This is a research map, not a scored benchmark. It summarizes official-source
 claims captured in `competitors/*.json` so we can choose fair benchmark runs
@@ -41,6 +41,7 @@ Single-task scores on `guest-cli` products largely measure the guest agent.
 | Paseo | A-local-ade | `guest-cli` | AGPL self-hosted daemon + desktop/web/mobile/CLI; native guest CLIs; optional worktrees under ~/.paseo; v0.3.1. | Parallel agents, worktree isolation, review/PR/ship, schedules, relay remote, Hub triggers, voice. | Multi-surface remote control + broad native multi-harness catalog without token resale. | `needs-install`; CLI/daemon good for headless smoke; record guest CLI and worktree cwd. |
 | Devin | A-local-ade | `hybrid` | Proprietary; Devin Desktop (ex-Windsurf, renamed 2026-06-02) + native Devin CLI locally; Devin Cloud per-session VMs with Cognition-hosted models; enterprise dedicated VPC/CMK; Outposts self-hosted workers. | Agent Command Center (local+cloud Kanban, Spaces), worktree sessions, ACP guest agents (Codex/Claude/OpenCode/Gemini/Junie), CLI sandbox, managed Devins, /handoff to cloud, Devin Review, DeepWiki, Knowledge/Playbooks, Slack/Teams/Linear/Jira, API. | One vendor spanning IDE install base, local CLI agent, and autonomous cloud VMs under one quota, plus enterprise trust/ACU contracts. | `needs-install`; benchmark Devin CLI (`devin -p`) locally; report Devin Cloud as a separate cloud lane; label ACP guest runs by guest runtime. |
 | OpenHands (Agent Canvas) | A-local-ade | `hybrid` | MIT; React/TS Agent Canvas (npm/Docker, Electron preview) + Python Agent Server (Software Agent SDK); local/Docker/VM/K8s/Cloud backends; v1.24.0. | First-party OpenHands agent + ACP guests (Claude Code/Codex/Gemini CLI), BYO LLM, multi-backend switching, scheduled/webhook automations, skills/plugins/MCP, Docker sandbox. | Largest OSS coding-agent brand (ex-OpenDevin) with a model-agnostic SDK powering Canvas/Cloud; commercial Cloud/Enterprise on an MIT core. | `needs-install`; npm or Docker + BYO LLM key or authenticated ACP CLI; record agent/model/backend; Cloud runs are not parity. |
+| Paperclip | A-local-ade | `guest-cli` | MIT Node.js 24 server (Express, embedded Postgres) + React UI + npm CLI `paperclipai`; self-hosted local_trusted/authenticated modes; v2026.916.1. | "AI company" control plane: org chart, goals, heartbeats, ticketed issues with atomic checkout, budgets/approval gates, git-worktree execution workspaces + dev/preview services, adapters for Claude Code/Codex/Cursor/Gemini/OpenCode/Pi/Grok/Kimi/Hermes/OpenClaw, plugins, MCP gateway. | Org/governance abstraction over guest coding CLIs plus very large OSS adoption and adapter/plugin ecosystem. | `needs-install`; single engineer agent, count approvals as interventions, disable telemetry, verify actual worktree cwd; broad "agents for work" framing but coding-CLI execution is the core substrate. |
 
 ## Direct Benchmark Set
 
@@ -71,6 +72,7 @@ Use Class A for the first direct comparison:
 - Paseo
 - Devin
 - OpenHands
+- Paperclip
 
 Keep Augment Code in a separate Class B report unless the setup is explicitly
 normalized and the caveats are visible.
@@ -108,6 +110,7 @@ coding multi-agent ADE control plane).
 - Paseo: https://paseo.sh/, https://paseo.sh/agents, https://paseo.sh/docs/worktrees, https://paseo.sh/docs/cli, https://github.com/getpaseo/paseo, https://raw.githubusercontent.com/getpaseo/paseo/main/package.json
 - Devin: https://devin.ai/, https://devin.ai/pricing, https://docs.devin.ai/get-started/devin-intro, https://docs.devin.ai/desktop/devin-desktop-faq, https://docs.devin.ai/desktop/agent-command-center, https://docs.devin.ai/desktop/acp, https://docs.devin.ai/desktop/devin-local, https://docs.devin.ai/desktop/cascade/worktrees, https://docs.devin.ai/cli/index, https://docs.devin.ai/cli/sandbox, https://docs.devin.ai/work-with-devin/devin-handoff, https://docs.devin.ai/enterprise/deployment/overview, https://docs.devin.ai/cloud/outposts/overview, https://docs.devin.ai/admin/billing/self-serve, https://docs.devin.ai/work-with-devin/devin-review, https://docs.devin.ai/api-reference/overview
 - OpenHands: https://www.openhands.dev/, https://www.openhands.dev/pricing, https://github.com/OpenHands/OpenHands, https://raw.githubusercontent.com/OpenHands/OpenHands/main/package.json, https://github.com/OpenHands/OpenHands/releases/tag/v1.24.0, https://docs.openhands.dev/openhands/usage/agent-canvas/overview, https://docs.openhands.dev/openhands/usage/agent-canvas/acp-agents, https://docs.openhands.dev/openhands/usage/agent-canvas/backends, https://docs.openhands.dev/enterprise/enterprise-vs-oss, https://github.com/OpenHands/software-agent-sdk
+- Paperclip: https://paperclip.ing/, https://docs.paperclip.ing/reference/adapters/overview/, https://github.com/paperclipai/paperclip, https://raw.githubusercontent.com/paperclipai/paperclip/master/doc/PRODUCT.md, https://raw.githubusercontent.com/paperclipai/paperclip/master/doc/project-repositories.md, https://raw.githubusercontent.com/paperclipai/paperclip/master/doc/execution-github-identity.md, https://raw.githubusercontent.com/paperclipai/paperclip/master/doc/DEPLOYMENT-MODES.md, https://raw.githubusercontent.com/paperclipai/paperclip/master/package.json, https://registry.npmjs.org/paperclipai/latest
 
 ## Caveats Before Scoring
 

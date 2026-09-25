@@ -1,0 +1,253 @@
+{
+  "id": "paperclip",
+  "name": "Paperclip",
+  "class": "A-local-ade",
+  "homepage": "https://paperclip.ing/",
+  "source_url": "https://github.com/paperclipai/paperclip",
+  "license": "MIT",
+  "runner": {
+    "kind": "manual",
+    "notes": "Install via `npx paperclipai onboard --yes` (or `paperclipai test-drive` for an isolated instance), local_trusted loopback mode, authenticate at least one guest coding CLI (e.g. Claude Code or Codex) outside Paperclip, create a company with a single engineer agent on that adapter, point the project workspace at runs/<run-id>/worktree only, file prompt.md as one issue assigned to that agent, let heartbeats run to completion, then harness-verify the directory the agent actually edited (execution workspaces may be git worktrees). Record paperclipai version (e.g. 2026.916.1), adapter type, workspace/worktree mode, heartbeat settings, and human interventions (approvals count)."
+  },
+  "inclusion": "Class A self-hosted multi-agent control plane: MIT Node.js server + React UI that runs guest coding CLIs (Claude Code, Codex, Cursor, Gemini, OpenCode, Pi, Grok, Kimi, Hermes) as heartbeat-driven 'employees' on ticketed issues with git-worktree execution workspaces, GitHub project repositories, dev-server/preview runtime services, budgets and approval gates. Positioned as an 'AI company' / agents-at-work orchestrator (non-coding functions such as marketing/support are also advertised), but unlike excluded Macro its execution substrate is coding-CLI orchestration in isolated git workspaces, so it is cataloged as a peer rather than excluded.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "opencode",
+    "pi",
+    "grok-build",
+    "kimi-code",
+    "hermes",
+    "openclaw"
+  ],
+  "own_runtimes": [],
+  "runtime_model_notes": "Official adapters launch local CLIs as subprocesses (claude_local, codex_local, gemini_local, cursor, opencode_local, pi_local, grok_local, kimi_local, hermes_local) or call remote agents (openclaw_gateway, http); PRODUCT.md: 'does not mandate an agent runtime'. Adapter ids ship in-repo under packages/adapters.",
+  "pricing_model": "Free and open source (MIT), self-hosted; no Paperclip account required. BYO guest agent subscriptions/API keys. Repo docs reference an optional 'Paperclip EE' for richer skill-policy administration; no public pricing found in this pass.",
+  "public_stack_signals": [
+    "README: 'Node.js server and React UI that orchestrates a team of AI agents to run a business'; embedded PostgreSQL locally, external Postgres in production.",
+    "Monorepo paperclipai/paperclip (pnpm): server (Express 5, Drizzle ORM, embedded-postgres, better-auth, ws), ui (React 19, Vite, Tailwind 4, TanStack Query), cli (npm package `paperclipai`), packages/adapters/*, plugin SDK.",
+    "npm `paperclipai` latest 2026.916.1 (MIT); GitHub release v2026.916.1 published 2026-09-21; calendar-style versioning.",
+    "Adapters: claude-local, codex-local, cursor-local, cursor-cloud, gemini-local, grok-local, kimi-local, opencode-local, pi-local, hermes, hermes-gateway, openclaw-gateway, plus process/http.",
+    "Workspaces & Runtime: 'isolated execution workspaces (git worktrees, operator branches), and runtime services (dev servers, preview URLs)'.",
+    "Deployment modes local_trusted vs authenticated (private/public) with bind loopback/lan/tailnet/custom; Docker; sandbox providers (e2b, Cloudflare, Daytona, Modal, Novita, Kubernetes) per roadmap."
+  ],
+  "capabilities_to_probe": [
+    "single-agent issue execution on a guest CLI against a pinned repo workspace",
+    "git worktree execution workspace isolation and where edits land",
+    "atomic task checkout / execution locks with parallel agents",
+    "heartbeat scheduling, session resume across heartbeats",
+    "approval gates / execution policies and board overrides (count as interventions)",
+    "per-agent budget hard-stops and cost tracking",
+    "runtime services (dev server, preview URL) per workspace",
+    "managed git/gh launchers and GitHub identity during execution",
+    "sandboxed/cloud execution providers vs local runs",
+    "workspace diff plugin for reviewing agent output"
+  ],
+  "moat_hypotheses": [
+    "company/org-chart abstraction (goals, roles, budgets, governance) layered on top of guest coding CLIs",
+    "very large OSS mindshare for an agent control plane (~84k GitHub stars at review)",
+    "broad adapter + plugin ecosystem (local CLIs, gateways, sandbox providers, MCP gateway)",
+    "durable ticket/audit model with atomic checkout and cost controls for long-running autonomous agents"
+  ],
+  "setup_notes": [
+    "Requires Node.js 24.11+ (pnpm 9.15+ for source builds).",
+    "Quick try: `npx --registry https://registry.npmjs.org paperclipai onboard --yes`; isolated: `ANTHROPIC_API_KEY=... npx paperclipai test-drive` (or `--harness codex`).",
+    "Managed install: https://paperclip.ing/install.sh (checksum published alongside) installs CLI under ~/.paperclip/cli and can register a background service.",
+    "From source: git clone, pnpm install, pnpm dev (API at http://localhost:3100, embedded Postgres).",
+    "Telemetry is enabled by default; disable with PAPERCLIP_TELEMETRY_DISABLED=1 or DO_NOT_TRACK=1 for bench runs.",
+    "Guest CLIs must already be installed and authenticated; Paperclip does not replace them."
+  ],
+  "research": {
+    "last_reviewed": "2026-09-25",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://github.com/paperclipai/paperclip",
+        "kind": "source-repo",
+        "notes": "README: positioning ('app people use to manage AI agents for work', 'If OpenClaw is an employee, Paperclip is the company'), four pillars, systems (workspaces/git worktrees, heartbeat execution, governance, budgets, plugins), 'What Paperclip is not', quickstart, roadmap, telemetry, MIT license, ~84k stars."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/paperclipai/paperclip/master/doc/PRODUCT.md",
+        "kind": "source-repo",
+        "notes": "Product definition: control plane for autonomous AI companies; agent execution via local CLI/session adapters (Claude Code, Codex, Gemini, OpenCode, Pi, Cursor), process, webhook, adapter plugins; execution workspaces and preview/dev runtime services."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/paperclipai/paperclip/master/doc/project-repositories.md",
+        "kind": "source-repo",
+        "notes": "Projects select GitHub repositories; tasks materialize repositories as editable checkouts in their workspace; sandbox staging preserves Git history."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/paperclipai/paperclip/master/doc/execution-github-identity.md",
+        "kind": "source-repo",
+        "notes": "Managed token-free git/gh launchers per run identity; worktree Git metadata projection; runner network policy."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/paperclipai/paperclip/master/doc/DEPLOYMENT-MODES.md",
+        "kind": "source-repo",
+        "notes": "local_trusted vs authenticated (private/public) modes; bind loopback/lan/tailnet/custom."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/paperclipai/paperclip/master/package.json",
+        "kind": "package-manifest",
+        "notes": "pnpm monorepo scripts (server, ui, cli, db migrations, Playwright e2e); server/ui manifests show Express 5, Drizzle, embedded-postgres, better-auth, React 19, Vite, Tailwind 4."
+      },
+      {
+        "url": "https://registry.npmjs.org/paperclipai/latest",
+        "kind": "package-manifest",
+        "notes": "npm CLI paperclipai 2026.916.1, MIT, repository paperclipai/paperclip (cli directory)."
+      },
+      {
+        "url": "https://paperclip.ing/",
+        "kind": "official-site",
+        "notes": "'A team of agents for every person'; coding and non-coding functions; supported agents (Claude, Codex, Gemini, Cursor, Hermes, OpenClaw, Pi); open-source self-hosted install."
+      },
+      {
+        "url": "https://docs.paperclip.ing/reference/adapters/overview/",
+        "kind": "official-docs",
+        "notes": "Adapter catalog: claude_local, codex_local, gemini_local, cursor, opencode_local, pi_local, hermes_local, grok_local, kimi_local, openclaw_gateway, process, http; adapters launch/call runtime and capture session/usage."
+      }
+    ],
+    "positioning": "An open-source, self-hosted control plane for running teams of AI agents as a 'company'—org chart, goals, budgets, governance, and heartbeats—where the workers are guest coding CLIs (Claude Code, Codex, Cursor, Gemini, OpenCode, Pi, …) executing ticketed issues in isolated git-worktree workspaces. Marketed broadly as 'manage AI agents for work' ('Manage business goals, not pull requests'), with software engineering as the most developed execution path.",
+    "stack": {
+      "runtime": [
+        "Node.js 24.11+ server process (local or self-hosted)",
+        "guest coding-agent CLI subprocesses via adapters",
+        "optional remote/sandbox execution providers"
+      ],
+      "frontend": [
+        "React 19 + Vite + Tailwind 4 web UI (mobile-responsive)",
+        "paperclipai CLI"
+      ],
+      "backend": [
+        "Express 5 API server (default http://localhost:3100) with WebSocket",
+        "Drizzle ORM",
+        "better-auth for authenticated mode",
+        "DB-backed heartbeat wakeup queue",
+        "out-of-process plugin workers"
+      ],
+      "packaging": [
+        "npm CLI paperclipai (npx onboard / test-drive)",
+        "install.sh managed installer with optional background service (Linux/macOS)",
+        "Dockerfile / Docker deployment",
+        "source build via pnpm"
+      ],
+      "data": [
+        "embedded PostgreSQL locally; external Postgres in production",
+        "local encrypted secrets storage or provider-backed object storage",
+        "immutable activity/audit log, cost events, run logs",
+        "anonymous telemetry enabled by default (opt-out)"
+      ],
+      "unknowns": [
+        "Desktop app is on the roadmap, not shipped.",
+        "Scope and pricing of 'Paperclip EE' and any hosted cloud offering are not published in this pass.",
+        "Real-world reliability of long-running autonomous heartbeats on coding tasks is unmeasured."
+      ]
+    },
+    "infrastructure": [
+      "Default path: single local Node.js process with embedded Postgres and local file storage, loopback bind, no login (local_trusted).",
+      "Authenticated private/public modes for LAN/Tailscale/cloud exposure; one deployment can host many isolated companies.",
+      "Agent runs resolve a project/execution workspace (git worktrees, operator branches) and can start runtime services (dev servers, preview URLs).",
+      "Guest CLIs use the operator's own credentials; managed git/gh launchers broker GitHub identity per run when a GitHub connection is configured.",
+      "Optional sandbox/cloud execution providers (e2b, Cloudflare, Daytona, Modal, Novita, self-hosted Kubernetes) per roadmap/plugins."
+    ],
+    "features": {
+      "agent_support": [
+        "Claude Code (claude_local)",
+        "Codex (codex_local)",
+        "Cursor (local and cloud adapters)",
+        "Gemini CLI",
+        "OpenCode",
+        "Pi",
+        "Grok CLI",
+        "Kimi Code",
+        "Hermes",
+        "OpenClaw via gateway",
+        "process and HTTP/webhook adapters plus external adapter plugins"
+      ],
+      "orchestration": [
+        "org chart with roles, reporting lines, delegation",
+        "heartbeat scheduling and event wakeups (assignment, @-mentions)",
+        "ticketed issues with parent/sub-issues, blockers, atomic checkout and execution locks",
+        "goal ancestry on every task",
+        "routines with cron/webhook/API triggers",
+        "planning mode with revisioned plans and plan approvals",
+        "watchdogs and self-healing run recovery"
+      ],
+      "workspace_isolation": [
+        "project workspaces bound to GitHub repositories",
+        "isolated execution workspaces via git worktrees / operator branches",
+        "runtime services (dev servers, preview URLs)",
+        "sandbox execution providers and low-trust presets"
+      ],
+      "review_shipping": [
+        "approval gates and execution policies with review stages",
+        "verify work from diffs, screenshots and tests (README pillar)",
+        "workspace diff plugin",
+        "work products and artifacts",
+        "managed git/gh for commits and GitHub operations"
+      ],
+      "remote_mobile": [
+        "mobile-ready web UI",
+        "LAN/Tailscale bind presets",
+        "authenticated public deployment mode"
+      ],
+      "context_memory": [
+        "persistent agent session state across heartbeats",
+        "runtime skill injection, Skill Studio, shared company skills",
+        "issue documents, comments, attachments",
+        "company export/import templates"
+      ],
+      "integrations": [
+        "GitHub connections (managed app/PAT)",
+        "MCP tool gateway with governance",
+        "plugin SDK (tools, jobs, UI contributions)",
+        "OpenTelemetry and Sentry (opt-in)",
+        "secrets providers (e.g. AWS)"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "npx paperclipai onboard --yes (Node.js 24.11+)",
+        "npx paperclipai test-drive --harness codex|claude for isolated instance",
+        "install.sh managed CLI/service",
+        "at least one authenticated guest coding CLI"
+      ],
+      "parity_risks": [
+        "Guest agent/model dominates single-task correctness (runtime_model guest-cli).",
+        "Company/org setup, CEO agent, and approval gates add overhead and human interventions not present in simpler cockpits; use a single engineer agent and record every approval.",
+        "Heartbeat-driven execution adds latency; wall-clock comparisons must note heartbeat interval.",
+        "Execution workspaces may be git worktrees outside runs/<run-id>/worktree—verify where edits land.",
+        "Telemetry on by default; disable for bench runs.",
+        "Fast calendar-versioned releases; pin the npm version."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T002-python-discount-feature"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "The 'agent company' abstraction (goals, org chart, budgets, governance) differentiates from worktree cockpits that manage sessions, not organizations.",
+        "Massive OSS adoption and plugin/adapter ecosystem create community lock-in for agent orchestration.",
+        "Atomic checkout, budgets, and audit trails target unattended 24/7 operation rather than interactive pairing."
+      ],
+      "evidence": [
+        "README documents systems for heartbeat execution, worktree workspaces, governance, budgets, plugins, and company portability.",
+        "Official adapter docs list ten+ local/remote runtime adapters; packages/adapters ships them in-repo.",
+        "GitHub repo shows ~84k stars, MIT license, and frequent releases (v2026.916.1 on 2026-09-21)."
+      ],
+      "unknowns": [
+        "Head-to-head coding-task quality vs Paseo/Compozy/Emdash is unscored.",
+        "Share of users running coding vs non-coding 'business' agents is not published.",
+        "Commercial boundary (EE, cloud) not mapped."
+      ]
+    }
+  },
+  "research_status": "Cataloged 2026-09-25 from GitHub README, doc/PRODUCT.md, project-repositories and execution-github-identity docs, DEPLOYMENT-MODES, package manifests, npm paperclipai 2026.916.1, paperclip.ing, and docs adapter reference. Classified Class A (guest-cli) despite 'AI company' framing because execution is coding-CLI orchestration in git-worktree workspaces.",
+  "updated_at": "2026-09-25"
+}

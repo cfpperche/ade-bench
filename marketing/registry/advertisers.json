@@ -560,6 +560,30 @@
         ]
       },
       "notes": "Vendor All Hands AI; formerly OpenDevin; GitHub org All-Hands-AI renamed OpenHands and all-hands.dev redirects to openhands.dev. Collisions: 'OpenDevin' vs Cognition's Devin (separate competitor), 'All Hands' is generic (all-hands meetings), 'Agent Canvas' is a generic phrase. Match on domain or GitHub org before counting an ad. Social handles not verified."
+    },
+    {
+      "product_id": "paperclip",
+      "display_name": "Paperclip",
+      "included": true,
+      "aliases": {
+        "names": [
+          "Paperclip",
+          "Paperclip AI",
+          "paperclipai",
+          "Paperclip Labs"
+        ],
+        "domains": [
+          "paperclip.ing",
+          "docs.paperclip.ing"
+        ],
+        "handles": [
+          "papercliping"
+        ],
+        "github_orgs": [
+          "paperclipai"
+        ]
+      },
+      "notes": "Open-source self-hosted agent-company control plane (paperclip.ing / paperclipai/paperclip, npm paperclipai). 'Paperclip' is a very generic word: match only on paperclip.ing, paperclipai, @papercliping or explicit AI-agent orchestration context. Exclude office paperclips, the 'paperclip maximizer' AI-safety thought experiment, and other companies/apps named Paperclip. Community list gsxdsm/awesome-paperclip is not official."
     }
   ]
 }
