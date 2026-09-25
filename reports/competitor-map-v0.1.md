@@ -1,6 +1,6 @@
 # Competitor Map v0.1
 
-Reviewed: 2026-09-22 (PiCode replaces the retired Tachyon reference profile; prior: Paseo catalog, Xirp/Emdash/Copilot app/Compozy, AgentsRoom enrichment, Macro excluded)
+Reviewed: 2026-09-25 (Devin and OpenHands catalog; prior 2026-09-22: PiCode replaces the retired Tachyon reference profile; prior: Paseo catalog, Xirp/Emdash/Copilot app/Compozy, AgentsRoom enrichment, Macro excluded)
 
 This is a research map, not a scored benchmark. It summarizes official-source
 claims captured in `competitors/*.json` so we can choose fair benchmark runs
@@ -39,6 +39,8 @@ Single-task scores on `guest-cli` products largely measure the guest agent.
 | GitHub Copilot app | A-local-ade | `hybrid` | Proprietary multi-OS desktop on GitHub; local worktrees + optional cloud sessions; Copilot plan gates. | My Work, parallel worktree sessions, issue→PR, browser/terminal validation, Agent Merge, skills/MCP, automations/canvases. | GitHub-native SDLC graph and distribution as the agent control plane. | `needs-install`; record plan tier and local vs cloud; Copilot entitlement required. |
 | Compozy (CompozyOS) | A-local-ade | `guest-cli` | MIT Go daemon + SQLite; web/CLI/HTTP; ACP guest CLIs; beta v0.3 local-first agent OS. | Durable sessions, task claim/lease kernel, loops, Markdown memory+dream, permissions, automation, Compozy Network, bridges. | Autonomy kernel + daemon-owned state around guest coding CLIs without owning a model. | `needs-install`; pin beta tag; guest CLI dominates single-task score. |
 | Paseo | A-local-ade | `guest-cli` | AGPL self-hosted daemon + desktop/web/mobile/CLI; native guest CLIs; optional worktrees under ~/.paseo; v0.3.1. | Parallel agents, worktree isolation, review/PR/ship, schedules, relay remote, Hub triggers, voice. | Multi-surface remote control + broad native multi-harness catalog without token resale. | `needs-install`; CLI/daemon good for headless smoke; record guest CLI and worktree cwd. |
+| Devin | A-local-ade | `hybrid` | Proprietary; Devin Desktop (ex-Windsurf, renamed 2026-06-02) + native Devin CLI locally; Devin Cloud per-session VMs with Cognition-hosted models; enterprise dedicated VPC/CMK; Outposts self-hosted workers. | Agent Command Center (local+cloud Kanban, Spaces), worktree sessions, ACP guest agents (Codex/Claude/OpenCode/Gemini/Junie), CLI sandbox, managed Devins, /handoff to cloud, Devin Review, DeepWiki, Knowledge/Playbooks, Slack/Teams/Linear/Jira, API. | One vendor spanning IDE install base, local CLI agent, and autonomous cloud VMs under one quota, plus enterprise trust/ACU contracts. | `needs-install`; benchmark Devin CLI (`devin -p`) locally; report Devin Cloud as a separate cloud lane; label ACP guest runs by guest runtime. |
+| OpenHands (Agent Canvas) | A-local-ade | `hybrid` | MIT; React/TS Agent Canvas (npm/Docker, Electron preview) + Python Agent Server (Software Agent SDK); local/Docker/VM/K8s/Cloud backends; v1.24.0. | First-party OpenHands agent + ACP guests (Claude Code/Codex/Gemini CLI), BYO LLM, multi-backend switching, scheduled/webhook automations, skills/plugins/MCP, Docker sandbox. | Largest OSS coding-agent brand (ex-OpenDevin) with a model-agnostic SDK powering Canvas/Cloud; commercial Cloud/Enterprise on an MIT core. | `needs-install`; npm or Docker + BYO LLM key or authenticated ACP CLI; record agent/model/backend; Cloud runs are not parity. |
 
 ## Direct Benchmark Set
 
@@ -67,6 +69,8 @@ Use Class A for the first direct comparison:
 - GitHub Copilot app
 - Compozy (CompozyOS)
 - Paseo
+- Devin
+- OpenHands
 
 Keep Augment Code in a separate Class B report unless the setup is explicitly
 normalized and the caveats are visible.
@@ -102,6 +106,8 @@ coding multi-agent ADE control plane).
 - Macro (excluded): https://macro.com/, https://docs.macro.com/, https://github.com/macro-inc/macro
 - Compozy (CompozyOS): https://www.compozy.com/, https://github.com/compozy/compozy, https://raw.githubusercontent.com/compozy/compozy/main/README.md, https://raw.githubusercontent.com/compozy/compozy/main/LICENSE, https://raw.githubusercontent.com/compozy/compozy/main/PRODUCT.md, https://raw.githubusercontent.com/compozy/compozy/main/go.mod, https://www.compozy.com/docs/
 - Paseo: https://paseo.sh/, https://paseo.sh/agents, https://paseo.sh/docs/worktrees, https://paseo.sh/docs/cli, https://github.com/getpaseo/paseo, https://raw.githubusercontent.com/getpaseo/paseo/main/package.json
+- Devin: https://devin.ai/, https://devin.ai/pricing, https://docs.devin.ai/get-started/devin-intro, https://docs.devin.ai/desktop/devin-desktop-faq, https://docs.devin.ai/desktop/agent-command-center, https://docs.devin.ai/desktop/acp, https://docs.devin.ai/desktop/devin-local, https://docs.devin.ai/desktop/cascade/worktrees, https://docs.devin.ai/cli/index, https://docs.devin.ai/cli/sandbox, https://docs.devin.ai/work-with-devin/devin-handoff, https://docs.devin.ai/enterprise/deployment/overview, https://docs.devin.ai/cloud/outposts/overview, https://docs.devin.ai/admin/billing/self-serve, https://docs.devin.ai/work-with-devin/devin-review, https://docs.devin.ai/api-reference/overview
+- OpenHands: https://www.openhands.dev/, https://www.openhands.dev/pricing, https://github.com/OpenHands/OpenHands, https://raw.githubusercontent.com/OpenHands/OpenHands/main/package.json, https://github.com/OpenHands/OpenHands/releases/tag/v1.24.0, https://docs.openhands.dev/openhands/usage/agent-canvas/overview, https://docs.openhands.dev/openhands/usage/agent-canvas/acp-agents, https://docs.openhands.dev/openhands/usage/agent-canvas/backends, https://docs.openhands.dev/enterprise/enterprise-vs-oss, https://github.com/OpenHands/software-agent-sdk
 
 ## Caveats Before Scoring
 

@@ -40,6 +40,8 @@ Class A products are direct local or multi-agent ADE competitors:
 - GitHub Copilot app
 - Compozy (CompozyOS)
 - Paseo
+- Devin
+- OpenHands
 
 Class B products are enterprise agentic platforms:
 

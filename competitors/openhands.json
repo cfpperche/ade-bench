@@ -1,0 +1,287 @@
+{
+  "id": "openhands",
+  "name": "OpenHands (Agent Canvas)",
+  "class": "A-local-ade",
+  "homepage": "https://www.openhands.dev/",
+  "source_url": "https://github.com/OpenHands/OpenHands",
+  "license": "MIT",
+  "runner": {
+    "kind": "manual",
+    "notes": "Prefer the Docker sandbox path for parity: mount the parent of runs/<run-id>/worktree as PROJECTS_PATH and run ghcr.io/openhands/agent-canvas:<version> (UI at http://localhost:8000/canvas), or `npm install -g @openhands/agent-canvas && agent-canvas` (Node 24+, uv; no sandbox, host filesystem access). Configure the LLM (BYO key) or pick an ACP agent (Claude Code / Codex / Gemini CLI) in Settings -> Agent, open only the task worktree as the workspace, paste prompt.md into a new conversation, then harness-verify on the worktree. Record Agent Canvas version (e.g. 1.24.0), agent (OpenHands vs ACP guest), LLM/model, backend (local process vs Docker vs Cloud), and interventions. Do not mix OpenHands Cloud runs into local Class A results without caveat."
+  },
+  "inclusion": "Class A self-hostable local ADE: the MIT OpenHands repo now ships Agent Canvas, a local-first control center (web UI via npm/Docker plus preview Electron desktop packages) for conversations, terminals, files, and scheduled/webhook automations across local, Docker, VM, Kubernetes, and cloud agent backends. It runs its own OpenHands Software Agent SDK agent out of the box and also drives guest ACP agents (Claude Code, Codex, Gemini CLI, custom), so runtime_model is hybrid. OpenHands Cloud/Enterprise are commercial add-ons and are not the benchmark surface.",
+  "runtime_model": "hybrid",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "gemini-cli",
+    "acp-custom"
+  ],
+  "own_runtimes": [
+    "openhands-agent"
+  ],
+  "runtime_model_notes": "Default agent is the first-party OpenHands agent from the MIT Software Agent SDK (BYO LLM via LiteLLM-backed provider-agnostic interface); Agent Canvas can switch to ACP guest agents (Claude Code, Codex, Gemini CLI presets or any stdio ACP server).",
+  "pricing_model": "Open source Agent Canvas / SDK are MIT and free with BYO LLM key. OpenHands Cloud Individual is free to start (10 daily conversations, BYO key or OpenHands LLM provider at cost, Jira/Slack integrations). Enterprise (SaaS or self-hosted VPC) is commercially licensed with custom pricing (SAML/SSO, unlimited concurrent conversations, LLM gateway/budgets, plugin marketplace).",
+  "public_stack_signals": [
+    "GitHub org renamed All-Hands-AI -> OpenHands (API redirect); main repo OpenHands/OpenHands now hosts Agent Canvas (README h1), MIT, TypeScript, ~89k stars.",
+    "package.json: @openhands/agent-canvas 1.24.0, MIT, node >=24, bin agent-canvas; React + React Router + Vite + HeroUI + Tailwind + Monaco + xterm + Zustand + socket.io-client.",
+    "Backend is the OpenHands Agent Server (REST/WebSocket) from OpenHands/software-agent-sdk (Python, MIT, v1.49.6) plus optional OpenHands/automation service (schedules/webhooks).",
+    "Release v1.24.0 (2026-09-25) ships .dmg, .exe, .AppImage and .deb Agent Canvas desktop packages (electron-builder); docs call the native desktop app a preview.",
+    "Standalone OpenHands CLI repo (OpenHands/OpenHands-CLI, last release 1.16.0) is marked no longer actively maintained in favor of Agent Canvas.",
+    "SDK README badge claims SWE-bench 77.6 (vendor claim, not verified here)."
+  ],
+  "capabilities_to_probe": [
+    "local npm stack vs Docker-sandboxed backend on the same task",
+    "OpenHands agent vs ACP guest agent (Claude Code/Codex/Gemini CLI) switch in Settings -> Agent",
+    "multiple conversations and conversation branching",
+    "multi-backend switching (local, remote VM, Modal, Kubernetes, Cloud) from one UI",
+    "scheduled and webhook automations (GitHub PR review, repo monitor, Slack channel monitor)",
+    "skills, plugins, hooks and MCP servers per backend",
+    "LLM profiles and switching models mid-conversation",
+    "critic / iterative refinement (experimental)",
+    "Docker per-conversation tool isolation"
+  ],
+  "moat_hypotheses": [
+    "Large open-source community and long-lived brand (formerly OpenDevin) around a first-party, model-agnostic coding agent SDK",
+    "Separation of UI (Agent Canvas), Agent Server, automation service and sandbox lets one control center span laptop, VM, Kubernetes and Cloud",
+    "Hybrid runtime: own SDK agent plus ACP guests reduces lock-in to a single agent vendor",
+    "Enterprise self-hosting (VPC, SAML, LLM gateway, observability) monetizes the MIT core"
+  ],
+  "setup_notes": [
+    "npm install -g @openhands/agent-canvas && agent-canvas (Node 24+, uv); runs agent-server directly on the host with full filesystem access.",
+    "Docker: docker run -it --rm -p 8000:8000 -v $HOME/.openhands:/home/openhands/.openhands -v $PROJECTS_PATH:/projects ghcr.io/openhands/agent-canvas:1.24.0; UI at /canvas.",
+    "From source: git clone OpenHands/OpenHands && npm install && npm run dev.",
+    "Desktop preview installers attached to GitHub releases (dmg/exe/AppImage/deb).",
+    "ACP guests require the guest CLI's own subscription login or API key; subscription login takes priority over an API key.",
+    "Settings, LLM config, MCP servers and automations are scoped to the active backend."
+  ],
+  "research": {
+    "last_reviewed": "2026-09-25",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://www.openhands.dev/",
+        "kind": "official-site",
+        "notes": "all-hands.dev 301-redirects here. Positioning: open source platform for software engineering agents with GUI, CLI, SDK and enterprise control plane."
+      },
+      {
+        "url": "https://www.openhands.dev/pricing",
+        "kind": "official-site",
+        "notes": "Open Source (free, BYO key, local only), Individual SaaS (free to start, 10 daily conversations, BYO key or at-cost models, Jira/Slack), Enterprise (custom, SaaS or self-hosted VPC, SAML/SSO, unlimited concurrent conversations)."
+      },
+      {
+        "url": "https://github.com/OpenHands/OpenHands",
+        "kind": "source-repo",
+        "notes": "README: Agent Canvas, self-hosted developer control center; runs OpenHands, Claude Code, Codex, Gemini or any ACP agent across local/remote/cloud backends; npm/Docker/source install; architecture and repository boundaries; status beta."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/OpenHands/OpenHands/main/LICENSE",
+        "kind": "source-repo",
+        "notes": "MIT License, Copyright 2025 OpenHands contributors. No enterprise/ directory in current repo root."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/OpenHands/OpenHands/main/package.json",
+        "kind": "package-manifest",
+        "notes": "@openhands/agent-canvas 1.24.0, MIT, node >=24, bin agent-canvas; React/Vite/HeroUI/Monaco/xterm/Zustand dependencies."
+      },
+      {
+        "url": "https://github.com/OpenHands/OpenHands/releases/tag/v1.24.0",
+        "kind": "source-repo",
+        "notes": "Latest release 1.24.0 published 2026-09-25 with dmg/exe/AppImage/deb desktop assets; notes mention ACP tool-call rendering, automation schedule fixes, cloud-shared automation conversations."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/OpenHands/OpenHands/main/docs/architecture.md",
+        "kind": "source-repo",
+        "notes": "Agent Canvas is UI only; does not execute agent actions or provide sandbox; talks to Agent Server, optional Automation Server and OpenHands Cloud APIs; npm package and library entrypoints."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/OpenHands/OpenHands/main/docs/SELF_HOSTING.md",
+        "kind": "source-repo",
+        "notes": "VM self-hosting with --public mode, LOCAL_BACKEND_API_KEY, ingress on 8000, agent server 18000, automation backend 18001."
+      },
+      {
+        "url": "https://docs.openhands.dev/overview/introduction",
+        "kind": "official-docs",
+        "notes": "Component map: Agent Canvas, Software Agent SDK, Agent Server, OpenHands Cloud, OpenHands Enterprise, Sandbox Server, CLI."
+      },
+      {
+        "url": "https://docs.openhands.dev/openhands/usage/agent-canvas/overview",
+        "kind": "official-docs",
+        "notes": "Control surface for conversations, files, terminals, models, backends, automations; OpenHands and ACP agents; new/branched conversations; native desktop app preview; five setup paths."
+      },
+      {
+        "url": "https://docs.openhands.dev/openhands/usage/agent-canvas/acp-agents",
+        "kind": "official-docs",
+        "notes": "ACP presets Claude Code (claude-agent-acp), Codex (codex-acp), Gemini CLI (--acp); Custom stdio ACP server; subscription login takes priority over API key."
+      },
+      {
+        "url": "https://docs.openhands.dev/openhands/usage/agent-canvas/backends",
+        "kind": "official-docs",
+        "notes": "Default local, self-hosted, Cloud/Enterprise backends; workspaces as folder/mount/container/cloud sandbox; settings, LLM, MCP and automations scoped per backend."
+      },
+      {
+        "url": "https://docs.openhands.dev/llms.txt",
+        "kind": "official-docs",
+        "notes": "V1 docs index: Docker/Process/Remote sandboxes, Docker per-conversation tool isolation, Kubernetes Helm, Modal backend, mobile access via Tailscale/ngrok, prebuilt automations (GitHub PR review, repo monitor, Slack monitor), skills/plugins/MCP, LiteLLM providers and local LLMs, Cloud GitHub/GitLab/Bitbucket/Slack/Jira (Linear coming soon), Enterprise integrations incl. Azure DevOps and Bitbucket DC, CLI headless/ACP IDE pages."
+      },
+      {
+        "url": "https://docs.openhands.dev/openhands/usage/cloud/openhands-cloud",
+        "kind": "official-docs",
+        "notes": "OpenHands Cloud at app.all-hands.dev; login with GitHub, GitLab or Bitbucket; Slack integration."
+      },
+      {
+        "url": "https://docs.openhands.dev/enterprise/enterprise-vs-oss",
+        "kind": "official-docs",
+        "notes": "Enterprise is commercial: SAML/Keycloak RBAC, custom runtime images, LLM gateway and budgets, Laminar observability, plugin marketplace, multi-user orgs."
+      },
+      {
+        "url": "https://github.com/OpenHands/software-agent-sdk",
+        "kind": "source-repo",
+        "notes": "MIT Python SDK + Agent Server (v1.49.6, 2026-09-25); local or Docker/Kubernetes ephemeral workspaces; engine behind CLI and Cloud; skills/plugins/MCP; README badge SWE-bench 77.6 (vendor claim)."
+      },
+      {
+        "url": "https://github.com/OpenHands/OpenHands-CLI",
+        "kind": "source-repo",
+        "notes": "OpenHands V1 CLI (uv tool install openhands / install script); marked no longer actively maintained, recommends Agent Canvas."
+      }
+    ],
+    "positioning": "An open-source, self-hosted developer control center (Agent Canvas) for running coding agents and automations: the first-party, model-agnostic OpenHands agent by default, plus ACP guest agents, across local, Docker, VM, Kubernetes and OpenHands Cloud/Enterprise backends.",
+    "stack": {
+      "runtime": [
+        "OpenHands Agent Server (Python, Software Agent SDK) launched via uvx or container",
+        "optional OpenHands Automation Server for schedules/webhooks",
+        "ingress proxy fronting frontend, agent server and automation on one origin",
+        "ACP guest agent subprocesses (Claude Code, Codex, Gemini CLI, custom)"
+      ],
+      "frontend": [
+        "React + TypeScript (React Router, Vite, HeroUI, Tailwind)",
+        "Monaco editor and xterm.js terminal panels",
+        "Electron desktop wrapper (preview) for macOS/Windows/Linux",
+        "library entrypoints for embedding Agent Canvas components"
+      ],
+      "backend": [
+        "Agent Server REST/WebSocket API (OpenAPI -> TypeScript client)",
+        "LLM access via provider-agnostic SDK LLM layer (LiteLLM-backed providers, local LLMs)",
+        "OpenHands Cloud / Sandbox Server APIs for hosted sandboxes (commercial)"
+      ],
+      "packaging": [
+        "npm @openhands/agent-canvas (agent-canvas binary)",
+        "Docker ghcr.io/openhands/agent-canvas",
+        "GitHub release desktop installers (dmg, exe, AppImage, deb)",
+        "Helm chart for Kubernetes",
+        "PyPI SDK/Agent Server packages"
+      ],
+      "data": [
+        "local config/state under ~/.openhands",
+        "workspaces are host folders, mounted /projects, containers or cloud sandboxes",
+        "automations can be synced to a Git repository",
+        "frontend includes posthog-js dependency (telemetry behavior not reviewed)"
+      ],
+      "unknowns": [
+        "Whether Agent Canvas creates git worktrees per conversation (not found in reviewed docs).",
+        "Built-in diff review / PR creation UI depth in Agent Canvas (Cloud resolver/GitHub App exists; local UI not verified).",
+        "Desktop app maturity (docs call it preview).",
+        "Telemetry defaults in the open-source build.",
+        "Exact concurrency limits for parallel conversations on a single local Agent Server."
+      ]
+    },
+    "infrastructure": [
+      "Default: full stack (frontend, agent server, automation, ingress) on the operator's machine; without Docker the agent has full host filesystem access.",
+      "Docker image or per-conversation Docker tool isolation provides sandboxed execution with mounted project directories.",
+      "Additional backends: remote Agent Servers on VMs, Mac Minis, Modal, Kubernetes (Helm), or OpenHands Cloud; one Canvas can switch between them.",
+      "LLM traffic goes to the user's configured provider (BYO key) or OpenHands LLM provider; ACP guests use their own CLI credentials.",
+      "Remote/mobile access via --public mode with API key, reverse proxy/TLS, or Tailscale/ngrok."
+    ],
+    "features": {
+      "agent_support": [
+        "OpenHands agent (Software Agent SDK, first-party)",
+        "Claude Code via ACP",
+        "Codex via ACP",
+        "Gemini CLI via ACP",
+        "custom stdio ACP servers",
+        "any LiteLLM-supported model incl. local LLMs (Ollama, LM Studio, vLLM, SGLang)"
+      ],
+      "orchestration": [
+        "multiple conversations per backend with conversation branching",
+        "scheduled and webhook-triggered automations",
+        "prebuilt automations (GitHub PR review, GitHub repo monitor, Slack channel monitor)",
+        "multi-backend switching from one UI",
+        "agent profiles and LLM profiles"
+      ],
+      "workspace_isolation": [
+        "Docker sandbox backend with mounted PROJECTS_PATH",
+        "per-conversation ephemeral Docker tool execution",
+        "process (unsandboxed) and remote sandboxes",
+        "Kubernetes / Apptainer / API-based sandboxes via Agent Server"
+      ],
+      "review_shipping": [
+        "GitHub PR review automation",
+        "Cloud/Enterprise GitHub resolver and GitHub/GitLab/Bitbucket integrations",
+        "critic-based iterative refinement (experimental)"
+      ],
+      "remote_mobile": [
+        "self-hosted VM with --public mode and API key",
+        "phone/tablet access via Tailscale or ngrok",
+        "OpenHands Cloud web UI and REST API"
+      ],
+      "context_memory": [
+        "skills (repository, org, user) and public skill marketplace",
+        "plugins bundling skills, hooks, MCP servers, agents and commands",
+        "MCP servers per backend",
+        "context condenser / conversation resume"
+      ],
+      "integrations": [
+        "GitHub, GitLab, Bitbucket (Cloud)",
+        "Slack",
+        "Jira Cloud (Cloud/Enterprise); Linear listed as coming soon",
+        "Azure DevOps and Bitbucket Data Center (Enterprise)",
+        "Notion via automations (README claim)",
+        "MCP",
+        "Python/TypeScript SDK and REST API"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "npm install -g @openhands/agent-canvas (Node 24+, uv)",
+        "Docker ghcr.io/openhands/agent-canvas:1.24.0",
+        "desktop installer preview from GitHub releases",
+        "BYO LLM API key or authenticated ACP guest CLI"
+      ],
+      "parity_risks": [
+        "Hybrid runtime: record whether the run used the OpenHands agent or an ACP guest; guest runs measure the guest more than OpenHands.",
+        "OpenHands-agent results depend heavily on the chosen LLM; pin model and provider.",
+        "Docker mount paths (/projects) differ from host paths; verify on the actual worktree the agent edited.",
+        "npm path runs unsandboxed with host filesystem access; not equivalent to Docker-sandboxed runs.",
+        "Cloud/Enterprise runs (hosted sandboxes, integrations) are not parity-equivalent to local Class A runs.",
+        "Very fast release cadence (several minor releases per week); pin version."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T002-python-discount-feature"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Brand and community scale of the leading open-source coding agent project give distribution peers lack.",
+        "Owning a model-agnostic agent SDK plus Agent Server API lets them power CLI, Canvas, Cloud and third-party products from one engine.",
+        "Backend abstraction (laptop to Kubernetes to Cloud) plus automations positions it as an always-on agent team, not just a chat UI.",
+        "Commercial Enterprise (VPC, SSO, budgets, observability) funds the MIT core."
+      ],
+      "evidence": [
+        "OpenHands/OpenHands README and architecture docs describe Agent Canvas, multi-backend Agent Server model and ACP agent support.",
+        "Software Agent SDK README states it is the engine behind the OpenHands CLI and Cloud and advertises SWE-bench 77.6 (vendor claim).",
+        "Pricing page and enterprise-vs-oss docs separate the free MIT local product from commercial Cloud/Enterprise tiers.",
+        "Releases show 1.20.0 through 1.24.0 shipped 2026-09-17 to 2026-09-25."
+      ],
+      "unknowns": [
+        "SWE-bench 77.6 is a vendor badge; model/config behind it not verified.",
+        "Head-to-head local ADE quality vs Class A peers is unscored.",
+        "Long-term stability of the Agent Canvas rewrite (status beta; CLI deprecated)."
+      ]
+    }
+  },
+  "research_status": "Cataloged 2026-09-25 from openhands.dev (all-hands.dev redirects), pricing, docs.openhands.dev (Agent Canvas overview/ACP/backends, Cloud, Enterprise, llms.txt index), GitHub OpenHands/OpenHands README/LICENSE/package.json/release v1.24.0, software-agent-sdk and OpenHands-CLI READMEs.",
+  "updated_at": "2026-09-25"
+}

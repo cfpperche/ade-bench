@@ -1,0 +1,315 @@
+{
+  "id": "devin",
+  "name": "Devin",
+  "class": "A-local-ade",
+  "homepage": "https://devin.ai/",
+  "source_url": null,
+  "license": "proprietary",
+  "runner": {
+    "kind": "cli",
+    "notes": "Preferred harness path: install Devin CLI (curl -fsSL https://cli.devin.ai/install.sh | bash, or brew install --cask devin-cli), sign in with a Devin account, cd into runs/<run-id>/worktree and run `devin -p --prompt-file prompt.md` (add `--respect-workspace-trust false` for non-interactive runs in an untrusted dir). Record the model/Adaptive/Fusion selection, permission mode, and whether --sandbox was used. GUI path: Devin Desktop (ex-Windsurf) Agent Command Center with Devin Local on a worktree session. Devin Cloud (`devin --cloud`, web app, API) runs in a Cognition VM and must be reported as a separate cloud lane, not mixed with local runs. Third-party ACP agents inside Desktop measure the guest agent, not Devin."
+  },
+  "inclusion": "Included as Class A (with a Class B cloud lane noted). Cognition's Devin is no longer only the cloud autonomous engineer: since 2026-06-02 Windsurf is Devin Desktop, whose primary view is an Agent Command Center (Kanban of local and cloud agent sessions, Spaces, git-worktree sessions with merge) that also runs third-party agents (Codex CLI, Claude Agent, OpenCode, Gemini CLI, Junie) via ACP, plus a local Devin CLI/Devin Local agent harness. That local multi-agent cockpit is a direct peer of Class A ADEs (compare GitHub Copilot app, Warp, JetBrains Air). The flagship Devin Cloud (brain always in Cognition's cloud; VM devboxes; enterprise dedicated VPC) is an enterprise agentic platform and should be benchmarked and reported separately from local runs.",
+  "runtime_model": "hybrid",
+  "guest_runtimes": [
+    "codex",
+    "claude-code",
+    "opencode",
+    "gemini-cli",
+    "junie"
+  ],
+  "own_runtimes": [
+    "devin-local",
+    "devin-cli",
+    "devin-cloud",
+    "cascade"
+  ],
+  "runtime_model_notes": "Primary path is first-party (Devin Local/CLI locally, Devin Cloud in Cognition VMs; Cascade legacy through July 2026); Devin Desktop also hosts third-party ACP agents with billing and terms delegated to the guest vendor.",
+  "pricing_model": "Self-serve Free ($0, light quota), Pro ($20/mo, up to 10 concurrent cloud sessions), Max ($200/mo, unlimited concurrency), Teams ($80/mo minimum; $40/mo full seat incl. Devin Desktop, free flex seats; up to 200 users); quota shared across Devin Cloud, Desktop, CLI and Review with on-demand credits after quota. Enterprise is contract-priced in Agent Compute Units (ACUs) with dedicated deployment options.",
+  "public_stack_signals": [
+    "Devin Desktop is the renamed Windsurf IDE (VS Code-derived user data directory; Chromium/Electron caches referenced in migration docs); installers for macOS, Windows, and Linux tar/deb/rpm (package devin-desktop).",
+    "Devin CLI is a local terminal agent for macOS, Linux, WSL, and Windows; supports non-interactive --print mode, ACP server mode (`devin acp`), cloud session control (`--cloud`), and an Outposts worker mode.",
+    "Devin Cloud architecture: stateless 'brain' always in Cognition's cloud; per-session 'Devbox' VM (Ubuntu, Windows, macOS) with shell, browser, and VS Code-based IDE served via *.devinapps.com.",
+    "REST API v3 (organization and enterprise scopes) with service users (cog_ keys); official Devin MCP and DeepWiki MCP servers."
+  ],
+  "capabilities_to_probe": [
+    "Devin CLI headless single-task correctness on the v0.1 fixtures",
+    "Devin Desktop Agent Command Center parallel worktree sessions and merge",
+    "ACP guest agents (Codex/Claude/OpenCode) inside Devin Desktop",
+    "local-to-cloud /handoff continuity",
+    "managed Devins parallel fan-out in Devin Cloud",
+    "Devin Review auto-fix loop on PRs",
+    "CLI OS-level sandbox and permission modes"
+  ],
+  "moat_hypotheses": [
+    "Single vendor spans IDE (ex-Windsurf install base), local CLI agent, and autonomous cloud VMs with one quota and handoff between them.",
+    "Enterprise trust surface (SOC 2, ISO 27001, FedRAMP claims, dedicated VPC, CMK, federal docs) plus deep SDLC integrations.",
+    "Org knowledge layers (DeepWiki, Knowledge, Playbooks, Skills, Session Insights) accumulate customer-specific context."
+  ],
+  "setup_notes": [
+    "Requires a Devin account for all agent paths; Free tier exists but quota is light, so budget a Pro plan for repeatable runs.",
+    "Keep local (CLI/Devin Local) and cloud (Devin Cloud VM) runs in separate result lanes; cloud runs clone from a git remote and do not see the local worktree.",
+    "Linux sandbox (--sandbox) requires bubblewrap and socat; it fails closed if missing."
+  ],
+  "research": {
+    "last_reviewed": "2026-09-25",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://devin.ai/",
+        "kind": "official-site",
+        "notes": "Homepage: 'Devin runs in the cloud or on your machine, tests in its own browser'; surfaces Devin Cloud, Desktop/CLI, Slack/Teams/Linear/Jira, Devin Review, Security Swarm, DeepWiki; enterprise SOC 2/ISO 27001/FedRAMP, zero data retention, RBAC/SSO/SCIM, VPC deployments."
+      },
+      {
+        "url": "https://devin.ai/pricing",
+        "kind": "official-site",
+        "notes": "Free $0; Pro $20/mo (up to 10 concurrent sessions, Devin Cloud access, SWE-2 free in Desktop/CLI through 2026-10-10); Max $200/mo (unlimited concurrency); Teams $80/mo + $40 per full seat, up to 200 users; Enterprise contact sales with dedicated deployment option."
+      },
+      {
+        "url": "https://docs.devin.ai/llms.txt",
+        "kind": "official-docs",
+        "notes": "Full docs index (Cloud, CLI, Desktop, Enterprise, Federal, API) used to map product surfaces."
+      },
+      {
+        "url": "https://docs.devin.ai/get-started/devin-intro",
+        "kind": "official-docs",
+        "notes": "Devin as autonomous AI software engineer; workspace with Shell, IDE, Browser; web app app.devin.ai, API, Slack/Teams; CLI install and /handoff workflow."
+      },
+      {
+        "url": "https://docs.devin.ai/desktop/devin-desktop-faq",
+        "kind": "official-docs",
+        "notes": "Windsurf became Devin Desktop on 2026-06-02; Agent Command Center (Spaces, Kanban, multi-agent) is primary view; products unified as Devin Cloud, Desktop, CLI, Review; Desktop usable with local-only agents; Cascade retained through July; Devin Local replaces Cascade; local paths ~/.devin, ~/.codeium."
+      },
+      {
+        "url": "https://docs.devin.ai/desktop/agent-command-center",
+        "kind": "official-docs",
+        "notes": "Kanban board of local agent sessions and cloud Devin sessions; status grouping; native notifications for Cascade, Devin Local, and ACP agents."
+      },
+      {
+        "url": "https://docs.devin.ai/desktop/acp",
+        "kind": "official-docs",
+        "notes": "Third-party agents via Agent Client Protocol (Codex CLI, Claude Agent, OpenCode, Junie, Gemini CLI, custom); Pro/Max/Teams, enterprise by admin; guest billing/terms delegated to the third party; local and team ACP registries."
+      },
+      {
+        "url": "https://docs.devin.ai/desktop/devin-local",
+        "kind": "official-docs",
+        "notes": "Devin Local shares the Devin CLI harness; subagents, OS-level sandboxing, plan mode, Quick Review subagent, worktree sessions with Merge; enterprise-gated by admin toggle."
+      },
+      {
+        "url": "https://docs.devin.ai/desktop/cascade/worktrees",
+        "kind": "official-docs",
+        "notes": "Git worktrees under ~/.windsurf/worktrees/<repo>, post_setup_worktree hook, up to 20 worktrees per workspace with LRU cleanup."
+      },
+      {
+        "url": "https://docs.devin.ai/desktop/spaces",
+        "kind": "official-docs",
+        "notes": "Spaces group local and cloud agent sessions, PRs, files, and shared context per task."
+      },
+      {
+        "url": "https://docs.devin.ai/desktop/install",
+        "kind": "official-docs",
+        "notes": "Devin Desktop installers for macOS, Windows 10+, Linux tar/deb/rpm (glibc >= 2.28); package renamed devin-desktop with windsurf transitional package."
+      },
+      {
+        "url": "https://docs.devin.ai/cli/index",
+        "kind": "official-docs",
+        "notes": "Devin CLI quickstart (curl installer, Homebrew cask, Windows installer); CLI is a local agent distinct from cloud Devin; CLI lacks Knowledge/Playbooks/Secrets support at review time."
+      },
+      {
+        "url": "https://docs.devin.ai/cli/reference/commands",
+        "kind": "official-docs",
+        "notes": "Flags --print/-p, --prompt-file, --permission-mode, --sandbox, --cloud, --resume; `devin acp` stdio server; `devin cloud drs` blueprint commands; hidden `devin worker` for Outposts."
+      },
+      {
+        "url": "https://docs.devin.ai/cli/sandbox",
+        "kind": "official-docs",
+        "notes": "OS-level sandbox (macOS seatbelt, Linux bwrap+socat), fail-closed, not supported on Windows; network filtering marked unstable."
+      },
+      {
+        "url": "https://docs.devin.ai/work-with-devin/advanced-capabilities",
+        "kind": "official-docs",
+        "notes": "Managed Devins: coordinator session spins up child sessions in isolated VMs with ACU limits, messaging, sleep/terminate; playbook and knowledge management; schedules."
+      },
+      {
+        "url": "https://docs.devin.ai/work-with-devin/devin-handoff",
+        "kind": "official-docs",
+        "notes": "Hand off from Devin CLI (/handoff) or from Claude Code/Codex/Cursor via open-source club-cog/devin-handoff plugin using the Sessions API."
+      },
+      {
+        "url": "https://docs.devin.ai/enterprise/deployment/overview",
+        "kind": "official-docs",
+        "notes": "Brain always in Cognition Cloud; Devbox in Cognition multi-tenant cloud (Enterprise Cloud) or customer-dedicated single-tenant VPC via AWS PrivateLink/IPSec; Enterprise Assured adds customer-managed keys."
+      },
+      {
+        "url": "https://docs.devin.ai/cloud/outposts/overview",
+        "kind": "official-docs",
+        "notes": "Outposts: cloud session tool execution on customer machines via `devin worker start`, outbound-only HTTPS; agent loop stays in Devin cloud; available on Pro/Max/Teams."
+      },
+      {
+        "url": "https://docs.devin.ai/admin/billing/self-serve",
+        "kind": "official-docs",
+        "notes": "Self-serve plan mechanics: shared quota across Devin sessions, CLI, Desktop; Teams full vs flex seats; Pro includes Slack, Linear, MCP integrations."
+      },
+      {
+        "url": "https://docs.devin.ai/admin/billing/usage",
+        "kind": "official-docs",
+        "notes": "Enterprise meters Agent Compute Units (ACUs); self-serve uses quota then on-demand credits; sessions sleep after 30 min idle; no concurrent session limits stated for metering."
+      },
+      {
+        "url": "https://docs.devin.ai/work-with-devin/devin-review",
+        "kind": "official-docs",
+        "notes": "Devin Review PR review platform for GitHub (incl. GHES), GitLab (incl. self-managed), Azure DevOps partial; Auto-Fix referenced in guidelines."
+      },
+      {
+        "url": "https://docs.devin.ai/api-reference/overview",
+        "kind": "official-docs",
+        "notes": "REST API v3 organization and enterprise scopes, service users with cog_ credentials, sessions on behalf of users."
+      },
+      {
+        "url": "https://github.com/CognitionAI",
+        "kind": "source-repo",
+        "notes": "Official Cognition GitHub org ('Makers of Devin'); product itself is closed source."
+      }
+    ],
+    "positioning": "Cognition's unified agentic software engineering product family: an autonomous cloud engineer (Devin Cloud) plus Devin Desktop (ex-Windsurf IDE) whose Agent Command Center manages local, cloud, and third-party ACP agents, and a local Devin CLI agent, with enterprise deployment and review/security add-ons.",
+    "stack": {
+      "runtime": [
+        "Devin Desktop desktop app (VS Code-derived, per official migration docs)",
+        "Devin CLI native binary for macOS, Linux, WSL, Windows",
+        "Devin Cloud per-session VMs (Ubuntu, Windows, macOS)"
+      ],
+      "frontend": [
+        "Devin Desktop editor + Agent Command Center",
+        "web app app.devin.ai with embedded IDE (VS Code frontend), shell, browser viewer",
+        "Slack and Microsoft Teams chat surfaces",
+        "ACP hosts (JetBrains, Zed, Xcode) for Devin CLI"
+      ],
+      "backend": [
+        "Cognition-hosted agent 'brain' (always in Cognition cloud)",
+        "Devbox VM per cloud session",
+        "REST API v3 and Devin MCP server",
+        "Outposts workers for customer-hosted execution"
+      ],
+      "packaging": [
+        "desktop installers (dmg/exe/tar/deb/rpm)",
+        "CLI installer script, Homebrew cask, Windows installer",
+        "SaaS web app",
+        "enterprise dedicated single-tenant VPC deployment"
+      ],
+      "data": [
+        "local config under ~/.devin, ~/.config/devin, ~/.codeium",
+        "plans written to ~/.devin/plans",
+        "cloud Knowledge, Playbooks, Secrets, blueprints, DeepWiki indexes stored in Devin cloud"
+      ],
+      "unknowns": [
+        "Implementation language and internals of Devin CLI, the cloud brain, and the Devbox orchestration are not published.",
+        "Which models back the default/Adaptive routing for a given run is dynamic and must be recorded per run.",
+        "No fully local/offline agent loop is documented: local agents still call Cognition-hosted inference; the self-hosted 'hybrid deployment' is referenced as maintenance mode.",
+        "Exact per-plan limits for Free quota are not published in numeric terms."
+      ]
+    },
+    "infrastructure": [
+      "Local: Devin Desktop and Devin CLI run the agent harness on the user's machine against local files; inference via Cognition cloud with multi-vendor models (Anthropic, OpenAI, Google, Cognition SWE models, open models), Adaptive router and Fusion pairing.",
+      "Cloud: each Devin session runs on its own isolated VM with shell, browser, IDE, and computer use; environment configured by blueprints; sessions sleep after 30 minutes idle.",
+      "Enterprise Cloud (multi-tenant) or Customer Dedicated Deployment (single-tenant VPC over AWS PrivateLink/IPSec); Enterprise Assured adds CMK; federal deployment docs exist.",
+      "Outposts let cloud sessions execute tool calls on customer-owned machines with outbound-only HTTPS workers."
+    ],
+    "features": {
+      "agent_support": [
+        "Devin Local agent (shared harness with Devin CLI)",
+        "Devin Cloud autonomous agent sessions",
+        "Cascade (legacy Windsurf agent, available through July 2026)",
+        "third-party ACP agents in Devin Desktop: Codex CLI, Claude Agent, OpenCode, Junie, Gemini CLI, custom ACP agents",
+        "Devin CLI as ACP agent in JetBrains, Zed, Xcode"
+      ],
+      "orchestration": [
+        "Agent Command Center Kanban of local and cloud sessions",
+        "Spaces grouping sessions, PRs, files, and shared context",
+        "CLI subagents (foreground/background) and Devin Local subagents",
+        "managed Devins: coordinator fans out child cloud sessions in parallel",
+        "Dynamic Workflows (Python-scripted fan-out of sessions)",
+        "Automations and scheduled sessions (Slack, GitHub, Linear, schedule triggers)",
+        "local-to-cloud /handoff"
+      ],
+      "workspace_isolation": [
+        "git worktree sessions in Devin Desktop with Merge back (up to 20 per workspace)",
+        "Devin CLI OS-level sandbox (macOS seatbelt, Linux bwrap) with permission modes",
+        "one isolated VM per Devin Cloud session",
+        "security profiles restricting network/MCP/git access for cloud sessions"
+      ],
+      "review_shipping": [
+        "Devin Review PR review with Auto-Fix of review comments and CI failures",
+        "Quick Review subagent for local changes",
+        "stacked PRs",
+        "PRs/MRs on GitHub, GitLab, Bitbucket, Azure DevOps",
+        "testing with video recordings",
+        "Security Swarm and Code Scans"
+      ],
+      "remote_mobile": [
+        "cloud sessions continue after the laptop closes",
+        "web app app.devin.ai",
+        "Slack and Microsoft Teams sessions",
+        "SSH into cloud session VMs and port forwarding from CLI",
+        "no dedicated mobile app mapped in this pass"
+      ],
+      "context_memory": [
+        "Knowledge (org/repo-scoped instructions)",
+        "Playbooks",
+        "Skills (SKILL.md) and AGENTS.md / rules",
+        "DeepWiki repository wikis and Ask Devin code search",
+        "Session Insights",
+        "Desktop RAG context engine, Fast Context, Codemaps"
+      ],
+      "integrations": [
+        "GitHub, GitLab, Bitbucket, Azure DevOps (incl. self-hosted variants)",
+        "Slack, Microsoft Teams, Linear, Jira, PagerDuty, Databricks",
+        "MCP marketplace and custom MCP servers",
+        "Devin API v3, Devin MCP, DeepWiki MCP",
+        "OIDC cloud auth (AWS, GCP, Vault, JFrog)",
+        "artifact stores (Artifactory, CodeArtifact, Azure Artifacts)"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "Devin account (Free tier exists; Pro $20/mo recommended for repeatable quota)",
+        "Devin CLI (curl installer / Homebrew / Windows installer)",
+        "Devin Desktop (macOS, Windows, Linux deb/rpm/tar)",
+        "optional GitHub connection for Devin Cloud runs",
+        "optional bubblewrap + socat for Linux sandbox"
+      ],
+      "parity_risks": [
+        "Hybrid runtime: ACP guest-agent runs measure the guest (Codex/Claude/OpenCode), not Devin; label runtime per run.",
+        "Local (CLI/Devin Local) and cloud (Devin Cloud VM) lanes have different environments; cloud runs need a git remote and cannot see the local worktree directly.",
+        "Model routing (Adaptive/Fusion/default) and promotional quotas (e.g. SWE-2 free until 2026-10-10) change over time; record model and plan.",
+        "Devin Cloud enterprise features (dedicated VPC, CMK, Outposts on dedicated tenants) are account-gated and not reproducible from a self-serve account.",
+        "CLI does not yet support cloud Knowledge/Playbooks/Secrets, so local and cloud context parity differs."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T004-ci-status-normalizer"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Owning IDE, local CLI agent, and autonomous cloud VMs under one account/quota with one-click local-to-cloud handoff is hard for single-surface Class A peers to match.",
+        "Windsurf install base plus enterprise contracts (ACU billing, dedicated VPC, federal) give distribution that local OSS ADEs lack.",
+        "Accumulated org context (DeepWiki, Knowledge, Playbooks, Session Insights) and review loop (Devin Review Auto-Fix) increase switching costs.",
+        "Opening Desktop to third-party ACP agents neutralizes the 'bring your own agent' advantage of guest-cli cockpits."
+      ],
+      "evidence": [
+        "Official FAQ states products are unified under Devin (Cloud, Desktop, CLI, Review) and Desktop is the command center for local and cloud agents.",
+        "Official docs describe Agent Command Center, Spaces, worktree sessions, ACP guest agents, managed Devins, handoff, Outposts, and enterprise dedicated deployment.",
+        "Pricing page lists Free/Pro/Max/Teams self-serve tiers and an Enterprise tier with dedicated deployment."
+      ],
+      "unknowns": [
+        "No harness run yet; single-task quality vs other Class A peers is unmeasured.",
+        "Durability of legacy Windsurf surfaces (JetBrains plugin in maintenance mode, Cascade sunset) and pace of Devin Local feature parity.",
+        "Actual concurrency, quota exhaustion behavior, and cost per fixture task on Free/Pro plans.",
+        "Enterprise-only controls and dedicated deployment behavior need account-backed verification."
+      ]
+    }
+  },
+  "research_status": "researched-official-v0.1",
+  "updated_at": "2026-09-25"
+}

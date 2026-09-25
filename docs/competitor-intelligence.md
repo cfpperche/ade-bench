@@ -38,6 +38,8 @@ The v0.1 roster covers software Agentic Development Environment competitors:
 - GitHub Copilot app
 - Compozy (CompozyOS)
 - Paseo
+- Devin
+- OpenHands
 
 LandingAI is intentionally excluded from this roster. Its ADE product is
 Agentic Document Extraction, not an agentic software development environment.

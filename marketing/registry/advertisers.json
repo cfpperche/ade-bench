@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "updated_at": "2026-09-22",
+  "updated_at": "2026-09-25",
   "advertisers": [
     {
       "product_id": "picode",
@@ -494,6 +494,72 @@
         ]
       },
       "notes": "Self-hosted multi-agent ADE (desktop/web/mobile/CLI). Prefer paseo.sh / getpaseo/paseo. Not related to unrelated 'paseo' brands."
+    },
+    {
+      "product_id": "devin",
+      "display_name": "Devin",
+      "included": true,
+      "aliases": {
+        "names": [
+          "Devin",
+          "Devin AI",
+          "Devin Desktop",
+          "Devin CLI",
+          "Devin Cloud",
+          "Devin Review",
+          "DeepWiki",
+          "Cognition",
+          "Cognition AI",
+          "Windsurf"
+        ],
+        "domains": [
+          "devin.ai",
+          "app.devin.ai",
+          "docs.devin.ai",
+          "cli.devin.ai",
+          "deepwiki.com",
+          "cognition.ai",
+          "cognition.com",
+          "devinenterprise.com",
+          "windsurf.com"
+        ],
+        "handles": [],
+        "github_orgs": [
+          "CognitionAI",
+          "club-cog"
+        ]
+      },
+      "notes": "'Devin' is a common first name; require product context (AI/agent/coding/Cognition/devin.ai) before matching bare 'Devin'. 'Cognition' collides with the generic word and other companies (e.g. Cognition Therapeutics); match only with Devin/AI context or cognition.ai/cognition.com. 'Windsurf' is the legacy name of Devin Desktop (renamed 2026-06-02) and a watersport; count only in IDE/Codeium context. DeepWiki is a separate free Cognition surface. Social handles not verified from official sources."
+    },
+    {
+      "product_id": "openhands",
+      "display_name": "OpenHands",
+      "included": true,
+      "aliases": {
+        "names": [
+          "OpenHands",
+          "OpenHands Agent Canvas",
+          "Agent Canvas",
+          "OpenHands Cloud",
+          "OpenHands Enterprise",
+          "OpenHands Software Agent SDK",
+          "All Hands AI",
+          "All Hands",
+          "OpenDevin"
+        ],
+        "domains": [
+          "openhands.dev",
+          "docs.openhands.dev",
+          "app.all-hands.dev",
+          "all-hands.dev"
+        ],
+        "handles": [],
+        "github_orgs": [
+          "OpenHands",
+          "All-Hands-AI"
+        ]
+      },
+      "notes": "Vendor All Hands AI; formerly OpenDevin; GitHub org All-Hands-AI renamed OpenHands and all-hands.dev redirects to openhands.dev. Collisions: 'OpenDevin' vs Cognition's Devin (separate competitor), 'All Hands' is generic (all-hands meetings), 'Agent Canvas' is a generic phrase. Match on domain or GitHub org before counting an ad. Social handles not verified."
     }
   ]
 }
