@@ -43,6 +43,7 @@ Class A products are direct local or multi-agent ADE competitors:
 - Devin
 - OpenHands
 - Paperclip
+- OpenChamber
 
 Class B products are enterprise agentic platforms:
 

@@ -40,6 +40,7 @@ agentic software development environment:
 - Devin
 - OpenHands
 - Paperclip
+- OpenChamber
 
 LandingAI is intentionally excluded from the first benchmark roster because its
 ADE product is Agentic Document Extraction, not an agentic software development

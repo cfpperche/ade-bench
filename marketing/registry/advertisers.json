@@ -584,6 +584,26 @@
         ]
       },
       "notes": "Open-source self-hosted agent-company control plane (paperclip.ing / paperclipai/paperclip, npm paperclipai). 'Paperclip' is a very generic word: match only on paperclip.ing, paperclipai, @papercliping or explicit AI-agent orchestration context. Exclude office paperclips, the 'paperclip maximizer' AI-safety thought experiment, and other companies/apps named Paperclip. Community list gsxdsm/awesome-paperclip is not official."
+    },
+    {
+      "product_id": "openchamber",
+      "display_name": "OpenChamber",
+      "included": true,
+      "aliases": {
+        "names": [
+          "OpenChamber",
+          "Open Chamber"
+        ],
+        "domains": [
+          "openchamber.dev",
+          "docs.openchamber.dev"
+        ],
+        "handles": [],
+        "github_orgs": [
+          "openchamber"
+        ]
+      },
+      "notes": "Independent OpenCode-based ADE (desktop/web/VS Code/mobile). Canonical repo openchamber/openchamber; unofficial forks (vitebc/openchamber, syntax-syndicate/opencode-chamber) are not the vendor. Not the OpenCode project (opencode.ai) itself. VS Code Marketplace publisher id fedaykindev. Its 'Fusion' multi-run feature is unrelated to the Fusion (Runfusion) competitor. Avoid matching generic 'chamber' terms."
     }
   ]
 }

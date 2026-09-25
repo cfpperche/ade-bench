@@ -219,3 +219,4 @@ See `docs/inspect-harness.md`.
 | 2026-08-17 | Phase 6: source-inspection harness for OSI products (static detectors + Claude/Codex/Grok prompt). |
 | 2026-09-25 | Cataloged **Devin** (Devin Desktop/CLI/Cloud; hybrid, Class A with separate cloud lane) and **OpenHands** (Agent Canvas, MIT; hybrid first-party + ACP guests) as Class A. |
 | 2026-09-25 | Cataloged **Paperclip** as Class A guest-cli (MIT self-hosted "AI company" control plane over coding CLIs; worktree execution workspaces). |
+| 2026-09-25 | Cataloged **OpenChamber** as Class A guest-cli (independent MIT multi-surface ADE over OpenCode; worktrees, multi-run, relay). |

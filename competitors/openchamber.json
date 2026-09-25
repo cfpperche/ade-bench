@@ -1,0 +1,245 @@
+{
+  "id": "openchamber",
+  "name": "OpenChamber",
+  "class": "A-local-ade",
+  "homepage": "https://openchamber.dev/",
+  "source_url": "https://github.com/openchamber/openchamber",
+  "license": "MIT",
+  "runner": {
+    "kind": "manual",
+    "notes": "Install OpenCode CLI (desktop bundles a matching OpenCode CLI), then run the OpenChamber desktop app or `openchamber --ui-password <pw>` (web/PWA on localhost:3000). Connect one provider/model in Settings -> Providers, open only runs/<run-id>/worktree as the project (or a worktree session created from it), send prompt.md in a single session, then harness-verify on the actual session cwd. Record OpenChamber version (e.g. 2.0.1), OpenCode version, provider/model, whether a worktree session/Multi-run/Session Goals were used, and interventions (approvals, answered questions). Headless path: CLI/server with OPENCODE_HOST pointing at a pinned OpenCode server."
+  },
+  "inclusion": "Direct Class A local/self-hosted ADE: independent open-source workspace (desktop, web/PWA, VS Code, iOS/Android, CLI/server) layered on the OpenCode agent server, with parallel sessions, git worktree sessions, Multi-run across up to five models, Session Goals, diff walkthrough review, GitHub PR flows, schedules, and E2E-encrypted remote access.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "opencode"
+  ],
+  "own_runtimes": [],
+  "runtime_model_notes": "Official README: uses OpenCode to run coding agents and is not affiliated with the OpenCode team; agent loop is the OpenCode server (managed or external via OPENCODE_HOST). Model breadth comes from OpenCode providers, not multiple guest CLIs.",
+  "pricing_model": "Free and open source (MIT). Bring-your-own model provider keys/subscriptions via OpenCode. Patreon support link; Private Relay is operated by OpenChamber (self-hostable relay repo exists). No paid tier found in official sources this pass.",
+  "public_stack_signals": [
+    "Official site/README: open-source ADE for running and reviewing AI coding work on desktop, web, VS Code, and mobile; independent of the OpenCode team.",
+    "Monorepo openchamber/openchamber, package.json v2.0.1, MIT, Bun workspaces (web, ui, electron, mobile, vscode, sdk, docs, extensions); Node >= 22.",
+    "Release v2.0.1 (2026-09-24): macOS dmg/zip (arm64/x64), Windows exe (x64/arm64), Linux AppImage (x86_64/arm64), Android apk/aab, VS Code vsix, openchamber-web tgz.",
+    "npm @openchamber/web 2.0.1 ships the `openchamber` CLI; server deps include @opencode/client, express, node-pty, simple-git, @octokit/rest.",
+    "Docs: worktree sessions, Multi-run with isolated worktrees, Session Goals, Private Relay, OpenCode server connection, agent control tool."
+  ],
+  "capabilities_to_probe": [
+    "parallel sessions across projects with status tracking",
+    "worktree sessions and Integrate back to base branch",
+    "Multi-run (up to five models) with isolate-runs worktrees and Fusion",
+    "Session Goals auto-continue loop",
+    "Changes Walkthrough diff review",
+    "GitHub issue/PR-started sessions, check/review feedback, merge",
+    "Preview/browser element-to-agent context",
+    "scheduled tasks (cron)",
+    "mobile/web remote over Private Relay, tunnels, SSH remote instances",
+    "agent control tool (agent creates sessions/worktrees/schedules)"
+  ],
+  "moat_hypotheses": [
+    "Deepest OpenCode-native UI/workflow layer (managed OpenCode server, providers, agents) across desktop/web/VS Code/mobile",
+    "Outcome-oriented features (Session Goals, Multi-run + Fusion, Changes Walkthrough) on top of a single open agent runtime",
+    "E2E-encrypted relay pairing for phone control without exposing ports",
+    "Large OSS adoption (~10.6K GitHub stars at review) and MIT license"
+  ],
+  "setup_notes": [
+    "Desktop: download from GitHub Releases (v2.0.1); desktop bundles the matching OpenCode CLI.",
+    "Web/PWA: curl install script from repo, then `openchamber --ui-password <pw>`; requires Node.js 22+ and an installed OpenCode CLI.",
+    "VS Code: Marketplace extension fedaykindev.openchamber (uses installed OpenCode CLI).",
+    "iOS via TestFlight beta; Android APK from releases.",
+    "Binds to 127.0.0.1 by default; set a UI password before --lan/tunnels."
+  ],
+  "research": {
+    "last_reviewed": "2026-09-25",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://openchamber.dev/",
+        "kind": "official-site",
+        "notes": "Positioning as ADE, runs on OpenCode SDK, independent project, multi-run up to five models in worktrees, relay QR pairing, review walkthrough, git/PR, browser, desktop/mobile/editor surfaces, MIT, BYO provider keys."
+      },
+      {
+        "url": "https://github.com/openchamber/openchamber",
+        "kind": "source-repo",
+        "notes": "README: Session Goals, Multi-run/Fusion, Changes Walkthrough, Preview, GitHub issue-to-PR, multi-device, Private Relay, schedules, surfaces table, install commands, 'Why OpenCode' and non-affiliation statement; MIT LICENSE; release v2.0.1 assets."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/openchamber/openchamber/main/package.json",
+        "kind": "package-manifest",
+        "notes": "openchamber-monorepo v2.0.1, MIT, Bun workspaces, Node >= 22, electron/mobile/vscode/web/ui/sdk packages."
+      },
+      {
+        "url": "https://registry.npmjs.org/@openchamber/web",
+        "kind": "package-manifest",
+        "notes": "@openchamber/web latest 2.0.1; bin `openchamber`; depends on @opencode/client, express, node-pty, simple-git, @octokit/rest."
+      },
+      {
+        "url": "https://docs.openchamber.dev/",
+        "kind": "official-docs",
+        "notes": "Docs site; pages sourced from packages/docs/content/docs in the repo (install, worktrees, multi-run, opencode-server, providers, private-relay, security, mobile, agent-control-tool)."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/openchamber/openchamber/main/packages/docs/content/docs/worktrees.mdx",
+        "kind": "official-docs",
+        "notes": "Worktree sessions: new/existing branch, Integrate into another branch, agent conflict resolution, cleanup with optional branch deletion."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/openchamber/openchamber/main/packages/docs/content/docs/multi-run.mdx",
+        "kind": "official-docs",
+        "notes": "Multi-run launches several sessions from one prompt across models; isolate runs gives each its own worktree and branch."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/openchamber/openchamber/main/packages/docs/content/docs/opencode-server.mdx",
+        "kind": "official-docs",
+        "notes": "OpenChamber runs on top of an OpenCode server; starts/manages its own or connects via OPENCODE_HOST/OPENCODE_SKIP_START; default port 4096."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/openchamber/openchamber/main/packages/docs/content/docs/private-relay.mdx",
+        "kind": "official-docs",
+        "notes": "E2E-encrypted relay, outbound-only server connection, single-use pairing, revocable device tokens."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/openchamber/openchamber/main/packages/docs/content/docs/mobile.mdx",
+        "kind": "official-docs",
+        "notes": "iOS TestFlight beta, Android APK, QR pairing, PWA install."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/openchamber/openchamber/main/packages/docs/content/docs/agent-control-tool.mdx",
+        "kind": "official-docs",
+        "notes": "Built-in `openchamber` agent tool to create/follow sessions, fork, create worktree sessions, manage scheduled tasks from chat."
+      }
+    ],
+    "positioning": "An independent, open-source agentic development environment that wraps the OpenCode agent server with a multi-surface workspace (desktop, web/PWA, VS Code, mobile, CLI/server) for running parallel and goal-driven coding sessions, isolating them in git worktrees, reviewing changes, shipping via GitHub, and steering work remotely.",
+    "stack": {
+      "runtime": [
+        "OpenCode server (managed by OpenChamber or external via OPENCODE_HOST)",
+        "OpenChamber Node.js (>=22) server / CLI (@openchamber/web)",
+        "Electron desktop shell (packages/electron)"
+      ],
+      "frontend": [
+        "shared web UI package (packages/ui)",
+        "Electron desktop app",
+        "web/PWA",
+        "VS Code extension (also listed for Cursor, Windsurf, Trae on site)",
+        "iOS/Android mobile apps (packages/mobile)"
+      ],
+      "backend": [
+        "Express-based server with WebSocket and PTY terminals (npm dependencies)",
+        "@opencode/client for agent sessions",
+        "simple-git and Octokit for git/GitHub flows",
+        "Private Relay (openchamber-relay: Cloudflare Worker + Durable Object, self-hostable)"
+      ],
+      "packaging": [
+        "macOS dmg/zip (arm64, x64)",
+        "Windows exe (x64, arm64)",
+        "Linux AppImage (x86_64, arm64)",
+        "Android apk/aab; iOS TestFlight",
+        "VS Code Marketplace / vsix",
+        "npm @openchamber/web + curl install script"
+      ],
+      "data": [
+        "local-first: projects and sessions stay on the operator machine (official site claim)",
+        "provider config and keys written to OpenCode config/auth",
+        "git worktrees for isolated sessions (location chosen per worktree; default suggested from branch name)"
+      ],
+      "unknowns": [
+        "Exact on-disk layout for OpenChamber state and default worktree root not verified in this pass.",
+        "Hosted Private Relay operational limits/SLA and any future paid tiers not published.",
+        "Depth of third-party CLI support: provider plugins (opencode-claude, opencode-cursor) are OpenCode provider plugins, not separate guest CLIs; no official evidence it drives Claude Code/Codex CLIs directly."
+      ]
+    },
+    "infrastructure": [
+      "Local-first: OpenChamber server binds to 127.0.0.1 by default and starts or connects to an OpenCode server on the operator machine.",
+      "Clients (desktop, web/PWA, VS Code, mobile) connect to that server directly, over LAN/VPN, SSH remote instances, Cloudflare/Ngrok tunnels, or the E2E-encrypted Private Relay.",
+      "Model/API traffic goes through OpenCode to the user's configured providers with the user's own keys."
+    ],
+    "features": {
+      "agent_support": [
+        "OpenCode agent server (sole agent runtime)",
+        "any OpenCode provider/model, incl. API-key and device-flow sign-in providers",
+        "OpenAI-compatible custom providers (Ollama, LiteLLM, gateways)",
+        "named agents with default model and permissions"
+      ],
+      "orchestration": [
+        "parallel sessions across projects with working/waiting/finished/failed status",
+        "Multi-run: same task to up to five models, compare, Fusion to combine",
+        "Session Goals: auto-continue until goal met, blocked, or limit",
+        "scheduled tasks (once/daily/weekly/cron) with goals",
+        "agent control tool to create/fork sessions and worktree sessions from chat"
+      ],
+      "workspace_isolation": [
+        "git worktree sessions (new or existing branch)",
+        "Multi-run isolate-runs worktree per model",
+        "Integrate worktree commits into another branch with agent conflict resolution"
+      ],
+      "review_shipping": [
+        "diff review and Changes Walkthrough (AI-guided ordered steps)",
+        "commit, push, create PR, update and merge PR",
+        "start sessions from GitHub issues/PRs; send failed checks/review comments back to agent",
+        "Preview / built-in browser with element-to-agent context"
+      ],
+      "remote_mobile": [
+        "iOS (TestFlight beta) and Android apps",
+        "web/PWA with background notifications",
+        "Private Relay with QR pairing and revocable device tokens",
+        "SSH remote machines, LAN, tunnels, reverse proxy",
+        "reattach to running terminal from another device"
+      ],
+      "context_memory": [
+        "sessions and projects persist across devices",
+        "notes, todos, plans, and reusable project actions",
+        "skills and skills catalog, magic prompts, commands/snippets",
+        "usage view: provider limits, token use, costs",
+        "voice input"
+      ],
+      "integrations": [
+        "OpenCode",
+        "GitHub",
+        "MCP",
+        "VS Code / Cursor / Windsurf / Trae extension",
+        "extensions",
+        "OpenChamber SDK (host/ui)"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "desktop release (bundles OpenCode CLI)",
+        "curl install script + `openchamber` CLI (Node.js 22+, OpenCode CLI installed)",
+        "VS Code extension",
+        "at least one provider/model connected in OpenCode"
+      ],
+      "parity_risks": [
+        "Single guest runtime (OpenCode): correctness reflects OpenCode + chosen model more than OpenChamber (runtime_model guest-cli).",
+        "Session Goals auto-continue and Multi-run/Fusion change turn counts and model mix; disable or record explicitly.",
+        "Worktree sessions run outside runs/<run-id>/worktree unless opened directly; verify the actual session cwd.",
+        "Managed vs external OpenCode server versions can differ between desktop bundle and CLI install; pin and record.",
+        "Relay/tunnel/mobile paths are not parity-equivalent to local-only runs."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T002-python-discount-feature"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Becoming the default GUI/control plane for OpenCode users across every surface.",
+        "Goal-driven and comparative execution (Session Goals, Multi-run + Fusion) differentiates from plain chat UIs.",
+        "E2E relay + native mobile apps make remote steering low-friction."
+      ],
+      "evidence": [
+        "README and site document multi-surface workspace, Session Goals, Multi-run/Fusion, Changes Walkthrough, GitHub flows, Private Relay.",
+        "Docs describe worktree sessions, isolate-runs Multi-run, OpenCode server management, and agent control tool.",
+        "Release v2.0.1 ships desktop (3 OSes), Android, VS Code vsix, and web tarball; ~10.6K GitHub stars at review; MIT license."
+      ],
+      "unknowns": [
+        "Dependence on a single third-party runtime (OpenCode) and its API stability is an unscored risk.",
+        "Head-to-head orchestration quality vs Paseo/Emdash/Orca is unscored.",
+        "Governance/maintainer bus factor (single named author in LICENSE/package.json) not assessed."
+      ]
+    }
+  },
+  "research_status": "Cataloged 2026-09-25 from openchamber.dev, GitHub README/LICENSE/package.json/release v2.0.1, npm @openchamber/web, and repo docs (worktrees, multi-run, opencode-server, private-relay, mobile, agent-control-tool).",
+  "updated_at": "2026-09-25"
+}
